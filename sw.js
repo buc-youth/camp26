@@ -3,6 +3,7 @@ const CACHE_NAME = "buc-camp-26-v2";
 const ASSETS = [
   "./",
   "./index.html",
+"./info.html",
   "./registration.html",
   "./bring.html",
   "./quiz.html",
