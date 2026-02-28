@@ -9,11 +9,13 @@ const ASSETS = [
   "./styles.css",
   "./app.js",
   "./manifest.webmanifest",
+"./assets/intro.mp4",
   "./assets/bg.jpg",
   "./assets/header.jpg",
   "./assets/date.jpg",
   "./assets/location.jpg",
   "./assets/scripture.jpg"
+
 ];
 
 self.addEventListener("install", (event) => {
