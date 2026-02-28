@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>BUC Camp 26 - Registration</title>
+
+  <link rel="manifest" href="manifest.webmanifest" />
+  <meta name="theme-color" content="#2b0a3d" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+
+  <main class="screen" role="main" aria-label="BUC Camp 26 Registration">
+    <div class="bg" aria-hidden="true"></div>
+
+    <section class="stack">
+
+      <!-- Tap banner to go home -->
+      <a class="tap" href="index.html" aria-label="Back to Home">
+        <img class="panel" src="assets/header.jpg" alt="BUC Camp 26 - Pentecost" />
+      </a>
+<img src="assets/register.png" alt="What to Bring" class="pageBanner" />
+   
+      <!-- Registration Card -->
+      <section class="formCard" aria-label="Registration Form">
+        
+        <p class="small" style="margin: 0 0 14px; opacity:.9;">
+          
+        </p>
+
+        <!-- Keep native required validation ON -->
+        <form id="regForm" autocomplete="on">
+
+          <label>
+            Camper Name
+            <input required name="camperName" type="text" placeholder="First + Last" />
+          </label>
+
+          <label>
+            Camper Age
+            <input required name="camperAge" type="number" min="0" max="99" placeholder="e.g., 14" />
+          </label>
+
+          <label>
+            Parent/Guardian Name
+            <input required name="guardianName" type="text" placeholder="Parent/Guardian" />
+          </label>
+
+          <label>
+            Parent/Guardian Phone
+            <input
+              required
+              name="parentPhone"
+              id="parentPhone"
+              type="tel"
+              inputmode="numeric"
+              autocomplete="tel"
+              placeholder="(301) 555-1234"
+            />
+            
+          </label>
+
+          <label>
+            Camper Phone (If different)
+            <input
+              name="camperPhone"
+              id="camperPhone"
+              type="tel"
+              inputmode="numeric"
+              autocomplete="tel"
+              placeholder="(240) 555-9876"
+            />
+            
+          </label>
+
+          <label>
+            Email (optional)
+            <input name="email" type="email" placeholder="name@email.com" />
+          </label>
+
+          <label>
+            T-Shirt Size
+            <select required name="shirtSize">
+              <option value="" selected disabled>Select size</option>
+              <option>Youth XXS</option>
+              <option>Youth XS</option>
+              <option>Youth S</option>
+              <option>Youth M</option>
+              <option>Youth L</option>
+              <option>Adult S</option>
+              <option>Adult M</option>
+              <option>Adult L</option>
+              <option>Adult XL</option>
+              <option>Adult 2XL</option>
+              <option>Adult 3XL</option>
+            </select>
+          </label>
+
+          <label>
+            Allergies / Medical Notes (optional)
+            <textarea name="medical" rows="3" placeholder="Any allergies, medications, or special needs?"></textarea>
+          </label>
+
+          <div class="buttonRow">
+            <center><button type="submit" class="primaryBtn">Submit</button>
+            <button type="reset" class="resetBtn">Reset</button></center>
+          </div>
+
+          <p id="errorBox" class="small" style="display:none; margin: 10px 0 0; color:#ffd2d2;">
+            Please enter valid phone number.
+          </p>
+
+          <p class="small" style="margin: 10px 0 0; opacity:.8;">
+            This opens your email app with the details filled in.
+          </p>
+
+        </form>
+      </section>
+
+    </section>
+    <div id="successOverlay" class="successOverlay">
+  <div class="successCard">
+    <h2>Registration Received</h2>
+    <p>See you at camp! 🔥</p>
+  </div>
+</div>
+  </main>
+
+  <!-- Bottom Navigation -->
+  <nav class="bottomNav" aria-label="Bottom navigation">
+    <div class="bottomNavInner">
+
+      <!-- Camp Info -->
+      <a href="info.html" class="navItem">
+        <svg class="icon" viewBox="0 0 24 24" fill="none">
+          <circle cx="12" cy="12" r="9"/>
+          <path d="M12 10v6"/>
+          <circle cx="12" cy="7" r="1"/>
+        </svg>
+        <span>Camp Info</span>
+      </a>
+
+      <!-- What to Bring -->
+      <a href="bring.html" class="navItem">
+        <svg class="icon" viewBox="0 0 24 24" fill="none">
+          <rect x="4" y="8" width="16" height="10" rx="2"/>
+          <path d="M9 8V6a3 3 0 0 1 6 0v2"/>
+          <line x1="4" y1="13" x2="20" y2="13"/>
+        </svg>
+        <span>What to Bring</span>
+      </a>
+
+      <!-- Registration (ACTIVE) -->
+      <a href="registration.html" class="navItem active">
+        <svg class="icon" viewBox="0 0 24 24" fill="none">
+          <rect x="4" y="3" width="14" height="18" rx="2"/>
+          <line x1="7" y1="8" x2="15" y2="8"/>
+          <line x1="7" y1="12" x2="15" y2="12"/>
+          <line x1="7" y1="16" x2="12" y2="16"/>
+          <path d="M18 14l2 2-5 5H13v-2z"/>
+        </svg>
+        <span>Registration</span>
+      </a>
+
+      <!-- Quiz Station -->
+      <a href="quiz.html" class="navItem">
+        <svg class="icon" viewBox="0 0 24 24" fill="none">
+          <path d="M8 3h8l1 3h3v15H4V6h3z"/>
+          <path d="M9 12l2 2 4-4"/>
+        </svg>
+        <span>Quiz Station</span>
+      </a>
+
+    </div>
+  </nav>
+
+  <script>
+    // Digits only
+    function normalizePhone(value){
+      return (value || "").replace(/\D/g, "");
+    }
+
+    // Format as (XXX) XXX-XXXX while typing
+    function formatPhone(value){
+      const digits = normalizePhone(value).substring(0, 10);
+      const len = digits.length;
+
+      if(len === 0) return "";
+      if(len < 4) return digits;
+      if(len < 7) return `(${digits.slice(0,3)}) ${digits.slice(3)}`;
+      return `(${digits.slice(0,3)}) ${digits.slice(3,6)}-${digits.slice(6)}`;
+    }
+
+    function attachFormatter(id){
+      const input = document.getElementById(id);
+      if(!input) return;
+
+      input.addEventListener("input", () => {
+        const formatted = formatPhone(input.value);
+        input.value = formatted;
+        // put cursor at end (simple + stable on mobile)
+        try { input.setSelectionRange(formatted.length, formatted.length); } catch(e) {}
+      });
+    }
+
+    attachFormatter("parentPhone");
+    attachFormatter("camperPhone");
+
+    document.getElementById("regForm").addEventListener("submit", function(e){
+      // Let browser handle required fields first
+      if(!this.checkValidity()){
+        return; // native UI will highlight missing required fields
+      }
+
+      e.preventDefault();
+
+      const errorBox = document.getElementById("errorBox");
+      errorBox.style.display = "none";
+
+      const data = new FormData(this);
+
+      const camperName   = data.get("camperName") || "";
+      const camperAge    = data.get("camperAge") || "";
+      const guardianName = data.get("guardianName") || "";
+
+      const parentPhoneRaw = data.get("parentPhone") || "";
+      const camperPhoneRaw = data.get("camperPhone") || "";
+
+      const email     = data.get("email") || "";
+      const shirtSize = data.get("shirtSize") || "";
+      const medical   = data.get("medical") || "";
+
+      const parentDigits = normalizePhone(parentPhoneRaw);
+      const camperDigits = normalizePhone(camperPhoneRaw);
+
+      // Parent phone required + must be 10 digits
+      if(parentDigits.length !== 10){
+        errorBox.textContent = "Must be a valid phone number.";
+        errorBox.style.display = "block";
+        return;
+      }
+
+      // Camper phone optional; if provided must be 10 digits
+      if(camperPhoneRaw.trim() !== "" && camperDigits.length !== 10){
+        errorBox.textContent = "Must be a valid phone number.";
+        errorBox.style.display = "block";
+        return;
+      }
+
+      const subject = `BUC Camp 26 Registration - ${camperName}`;
+
+      const body =
+`BUC Camp 26 Registration
+
+Camper Name: ${camperName}
+Camper Age: ${camperAge}
+
+Parent/Guardian: ${guardianName}
+Parent Phone: ${parentDigits}
+
+Camper Phone (if different): ${camperDigits || "N/A"}
+
+Email: ${email}
+
+T-Shirt Size: ${shirtSize}
+
+Allergies / Medical Notes:
+${medical}
+`;
+
+      const mailto = `mailto:njambijoy87@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      window.location.href = mailto;
+    });
+  </script>
+
+</body>
+</html>

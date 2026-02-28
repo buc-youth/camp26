@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>BUC Camp 26 - Camp Info</title>
+
+  <link rel="manifest" href="manifest.webmanifest" />
+  <meta name="theme-color" content="#2b0a3d" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+
+  <main class="screen" role="main" aria-label="BUC Camp 26 Camp Info">
+    <!-- Background -->
+    <div class="bg" aria-hidden="true"></div>
+
+    <!-- Content -->
+    <section class="stack">
+
+      <!-- OPTIONAL: Tap banner to go back home -->
+      <a class="tap" href="index.html" aria-label="Back to Home">
+        <img class="panel" src="assets/header.jpg" alt="BUC Camp 26 - Pentecost" />
+      </a>
+<img src="assets/info.png" alt="What to Bring" class="pageBanner" />
+   
+      <!-- Camp Fees / Cost Panel
+           If you have this as an image like fees.jpg, use it here -->
+      <!-- Example using an image: -->
+      <img class="panel" src="assets/fees.jpg" alt="Camp Fees" />
+
+      <!-- Optional: More info panels (if you have them as images)
+           Example: schedule.jpg, rules.jpg, contact.jpg -->
+      <!--
+      <img class="panel" src="assets/schedule.jpg" alt="Camp Schedule" />
+      <img class="panel" src="assets/contact.jpg" alt="Contact Information" />
+      -->
+
+     
+
+    </section>
+  </main>
+
+  <!-- Bottom Navigation -->
+  <nav class="bottomNav" aria-label="Bottom navigation">
+    <div class="bottomNavInner">
+
+      <!-- Camp Info (ACTIVE) -->
+      <a href="info.html" class="navItem active">
+        <svg class="icon" viewBox="0 0 24 24" fill="none">
+          <circle cx="12" cy="12" r="9"/>
+          <path d="M12 10v6"/>
+          <circle cx="12" cy="7" r="1"/>
+        </svg>
+        <span>Camp Info</span>
+      </a>
+
+      <!-- What to Bring -->
+      <a href="bring.html" class="navItem">
+        <svg class="icon" viewBox="0 0 24 24" fill="none">
+          <rect x="4" y="8" width="16" height="10" rx="2"/>
+          <path d="M9 8V6a3 3 0 0 1 6 0v2"/>
+        </svg>
+        <span>What to Bring</span>
+      </a>
+
+      <!-- Registration (form + pen) -->
+      <a href="registration.html" class="navItem">
+        <svg class="icon" viewBox="0 0 24 24" fill="none">
+          <rect x="4" y="3" width="14" height="18" rx="2"/>
+          <line x1="7" y1="8" x2="15" y2="8"/>
+          <line x1="7" y1="12" x2="15" y2="12"/>
+          <line x1="7" y1="16" x2="12" y2="16"/>
+          <path d="M18 14l2 2-5 5H13v-2z"/>
+        </svg>
+        <span>Registration</span>
+      </a>
+
+      <!-- Quiz Station -->
+      <a href="quiz.html" class="navItem">
+        <svg class="icon" viewBox="0 0 24 24" fill="none">
+          <path d="M8 3h8l1 3h3v15H4V6h3z"/>
+          <path d="M9 12l2 2 4-4"/>
+        </svg>
+        <span>Quiz Station</span>
+      </a>
+
+    </div>
+  </nav>
+
+</body>
+</html>

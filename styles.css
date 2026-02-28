@@ -1,0 +1,565 @@
+:root{
+  --maxw: 520px;
+  --shadow: 0 10px 25px rgba(0,0,0,.45);
+  --radius: 14px;
+}
+
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+
+body{
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  background: #0b0412;
+}
+
+/* Page shell */
+.screen{
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Background image (never steal taps) */
+.bg{
+  position: absolute;
+  inset: 0;
+  background-image: url("assets/bg.jpg");
+  background-size: cover;
+  background-position: center top;
+  filter: saturate(1.1) contrast(1.05);
+  transform: scale(1.03);
+  pointer-events: none;
+}
+
+/* Dark overlay (never steal taps) */
+.bg::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background: linear-gradient(to bottom,
+    rgba(6,2,10,.20),
+    rgba(6,2,10,.45),
+    rgba(6,2,10,.65)
+  );
+  pointer-events: none;
+}
+
+/* Main stack container */
+.stack{
+  position: relative;
+  z-index: 2;
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 14px 12px 20px;
+  display: grid;
+  gap: 12px;
+}
+
+/* Images/panels */
+.panel{
+  width: 100%;
+  display: block;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+/* Clickable wrapper */
+.tap{
+  display: block;
+  border-radius: var(--radius);
+  outline: none;
+}
+
+/* Tap feedback */
+.tap:active .panel{
+  transform: scale(0.98);
+  transition: 0.1s ease;
+}
+
+a img.panel{
+  cursor: pointer;
+}
+
+/* ---------- Buttons / Nav (if used on any page) ---------- */
+.nav{
+  margin-top: 6px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.navBtn{
+  text-align: center;
+  padding: 12px 10px;
+  border-radius: 999px;
+  text-decoration: none;
+  color: #fff;
+  font-weight: 700;
+  letter-spacing: .2px;
+  background: rgba(255, 255, 255, 0.10);
+  border: 1px solid rgba(255,255,255,0.16);
+  backdrop-filter: blur(8px);
+}
+
+.navBtn:active{
+  transform: scale(0.99);
+}
+
+/* ---------- Registration Form Card ---------- */
+.formCard{
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  background: rgba(255,255,255,0.10);
+  border: 1px solid rgba(255,255,255,0.16);
+  backdrop-filter: blur(10px);
+  padding: 14px;
+  color: #fff;
+}
+
+.formCard h2{
+  margin: 4px 0 12px;
+}
+
+label{
+  display: grid;
+  gap: 6px;
+  margin: 10px 0;
+  font-weight: 600;
+}
+
+input, select, textarea{
+  width: 100%;
+  padding: 12px 10px;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.20);
+  background: rgba(0,0,0,0.28);
+  color: #fff;
+  outline: none;
+}
+
+.small{
+  opacity: .85;
+  font-size: .92rem;
+}
+
+/* =========================================================
+   WHAT TO BRING — YOUTH CAMP APP STORE ENERGY (2x2 GRID)
+   ========================================================= */
+
+/* True 2x2 grid */
+.grid{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 14px;
+}
+
+/* Premium glass cards */
+.card{
+  background: rgba(0, 0, 0, 0.72);
+  backdrop-filter: blur(14px);
+  border-radius: 20px;
+  padding: 20px;
+  color: #f5f5f5;
+  min-height: 170px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  box-shadow:
+    0 12px 30px rgba(0,0,0,0.6),
+    0 0 0 1px rgba(255,255,255,0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:active{
+  transform: scale(0.97);
+  box-shadow:
+    0 8px 20px rgba(0,0,0,0.7);
+}
+
+/* Section title */
+.card h3{
+  margin: 0 0 14px 0;
+  font-size: 1.2rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  color: #ffffff;
+  position: relative;
+}
+
+/* Fire accent underline */
+.card h3::after{
+  content: "";
+  display: block;
+  height: 3px;
+  width: 45px;
+  margin-top: 8px;
+  border-radius: 2px;
+  background: linear-gradient(to right, #ff6a00, #ffb347);
+}
+
+/* Items (icons only, no bullets) */
+.items div{
+  margin-bottom: 10px;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  color: #e8e8e8;
+}
+
+/* Mobile tweak if needed */
+@media (max-width: 380px){
+  .grid{ gap: 12px; }
+  .card{ padding: 16px; min-height: 160px; }
+  .card h3{ font-size: 1.1rem; }
+  .items div{ font-size: 0.92rem; }
+}
+
+/* =========================================================
+   BOTTOM NAV (fixed, outlined icons like your mockup)
+   ========================================================= */
+
+:root{
+  --navH: 76px;
+  --navBg: rgba(10, 5, 18, 0.86);
+  --navBorder: rgba(255,255,255,0.08);
+  --navText: rgba(255,255,255,0.70);
+  --navActive: #ff8c42;
+}
+
+/* IMPORTANT: leave space so content doesn't hide under the nav */
+.stack{
+  padding-bottom: calc(var(--navH) + 18px);
+}
+
+.bottomNav{
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: var(--navH);
+
+  background: var(--navBg);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  border-top: 1px solid var(--navBorder);
+  z-index: 999;
+
+  display: flex;
+  justify-content: center;
+}
+
+.bottomNavInner{
+  width: 100%;
+  max-width: var(--maxw);
+
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+
+  padding: 8px 10px 12px;
+  gap: 6px; /* tiny breathing room */
+}
+
+.bottomNav .navItem{
+  text-decoration: none;
+  color: var(--navText);
+
+  height: 100%;
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: 6px;
+
+  font-weight: 700;
+  font-size: 0.75rem;
+  letter-spacing: 0.2px;
+
+  border-radius: 14px; /* makes tap area feel premium */
+  transition: transform 0.12s ease, background 0.12s ease, color 0.12s ease;
+}
+
+.bottomNav .navItem span{
+  line-height: 1.05;
+  text-align: center;
+}
+
+/* Outline icons */
+.bottomNav .icon{
+  width: 22px;
+  height: 22px;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* Active tab */
+.bottomNav .navItem.active{
+  color: var(--navActive);
+  background: rgba(255, 140, 66, 0.10);
+}
+
+/* Tap feedback */
+.bottomNav .navItem:active{
+  transform: scale(0.97);
+  background: rgba(255,255,255,0.06);
+}
+
+.scriptureLink{
+  text-decoration: none;
+  color: #ffb347;
+  font-weight: 700;
+  letter-spacing: .3px;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  transition: 0.2s ease;
+}
+
+.scriptureLink:hover{
+  color: #ffffff;
+}
+
+.scriptureLink:active{
+  transform: scale(0.97);
+}
+
+/* ===== Intro Video Overlay ===== */
+.introOverlay{
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.introVideo{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Skip button */
+.skipIntro{
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  padding: 10px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.25);
+  background: rgba(0,0,0,0.35);
+  color: #fff;
+  font-weight: 700;
+  backdrop-filter: blur(10px);
+}
+
+.skipIntro:active{
+  transform: scale(0.97);
+}
+
+.introOverlay{
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.introVideo{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.introControls{
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+  padding: 18px 16px 26px;
+  background: linear-gradient(to top, rgba(0,0,0,0.55), rgba(0,0,0,0.0));
+}
+
+.startIntro{
+  width: min(420px, 92%);
+  padding: 14px 16px;
+  border-radius: 999px;
+  border: none;
+  font-weight: 800;
+  letter-spacing: .3px;
+  color: #140718;
+  background: linear-gradient(135deg, #ff6a00, #ffb347);
+  box-shadow: 0 10px 25px rgba(0,0,0,.55);
+}
+.startIntro:active{ transform: scale(0.98); }
+
+.skipIntro{
+  width: min(420px, 92%);
+  padding: 12px 16px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.28);
+  background: rgba(255,255,255,0.10);
+  color: #fff;
+  font-weight: 700;
+  backdrop-filter: blur(10px);
+}
+.skipIntro:active{ transform: scale(0.98); }
+
+/* =========================
+   QUIZ PAGE EXTRAS
+   ========================= */
+
+.cardGlass{
+  border-radius: 22px;
+  padding: 16px;
+  background: rgba(255,255,255,0.11);
+  border: 1px solid rgba(255,255,255,0.16);
+  backdrop-filter: blur(14px);
+  box-shadow: var(--shadow);
+  position: relative;
+  overflow: hidden;
+}
+
+.cardGlass::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background: radial-gradient(circle at 25% 35%,
+    rgba(255, 170, 60, .22),
+    rgba(255, 80, 20, .12),
+    rgba(0,0,0,0)
+  );
+  opacity: .95;
+}
+
+.cardTitle{
+  position: relative;
+  z-index: 1;
+  margin: 0 0 10px;
+  font-size: 1.7rem;
+  font-weight: 900;
+  color: #fff;
+  letter-spacing: .2px;
+}
+
+.cardBody{
+  position: relative;
+  z-index: 1;
+  color: rgba(255,255,255,0.90);
+  font-weight: 650;
+  line-height: 1.35;
+}
+
+.cardBody b{
+  color: rgba(255,255,255,0.95);
+}
+
+.verseList{
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 10px;
+  margin: 12px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.verseLink{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 12px;
+  border-radius: 14px;
+  text-decoration: none;
+  color: rgba(255,255,255,0.92);
+  background: rgba(0,0,0,0.20);
+  border: 1px solid rgba(255,255,255,0.10);
+}
+
+.verseLink:active{
+  transform: scale(0.99);
+}
+
+.versePill{
+  font-weight: 900;
+  color: #ffb347;
+  letter-spacing: .2px;
+  white-space: nowrap;
+}
+
+.verseHint{
+  font-weight: 650;
+  opacity: .9;
+}
+
+.tipRow{
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.tipIcon{
+  width: 28px;
+  height: 28px;
+  flex: none;
+  opacity: .95;
+}
+.tipIcon *{
+  stroke: rgba(255,255,255,0.92);
+  stroke-width: 2;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.tipLink{
+  color: #ffb347;
+  font-weight: 900;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255,179,71,0.35);
+}
+
+.tipLink:active{
+  opacity: .9;
+}
+
+/* leave room for bottom nav */
+.bottomSpacer{ height: 92px; }
+
+.pageBanner {
+  width: 85%;
+  max-width: 520px;
+  height: auto;
+  display: block;
+  margin: 0 auto 18px auto;
+  border-radius: 18px;
+}
+
+.vvWrap{
+  text-align: center;
+  margin-top: 8px;
+}
+
+.vvIcon{
+  width: 80px;
+  height: 80px;
+  border-radius: 22px;
+  margin: 8px auto 14px auto;
+  display: block;
+  box-shadow: 0 12px 28px rgba(0,0,0,.45);
+}
+
+.vvText{
+  margin: 0 0 12px 0;
+  line-height: 1.4;
+}

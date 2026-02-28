@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>BUC Camp 26</title>
+
+  <link rel="manifest" href="manifest.webmanifest" />
+  <meta name="theme-color" content="#2b0a3d" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+my
+<body>
+
+<!-- ================= Intro Video Overlay ================= -->
+<div id="introOverlay" class="introOverlay" aria-label="Intro video">
+  <video
+    id="introVideo"
+    class="introVideo"
+    playsinline
+    preload="auto"
+    poster="assets/intro.jpg"
+  >
+    <source src="assets/intro.mp4" type="video/mp4" />
+  </video>
+
+  <div class="introControls">
+    <button id="startIntro" class="startIntro" type="button">
+      Tap to Start
+    </button>
+    <button id="skipIntro" class="skipIntro" type="button">
+      Skip
+    </button>
+  </div>
+</div>
+<!-- ======================================================= -->
+
+<main class="screen" role="main" aria-label="BUC Camp 26 Camp Info">
+
+  <!-- Background -->
+  <div class="bg" aria-hidden="true"></div>
+
+  <!-- Content -->
+  <section class="stack">
+
+    <!-- Banner -->
+    <img class="panel"
+         src="assets/header.jpg"
+         alt="BUC Camp 26 - Pentecost Theme" />
+
+    <!-- Date -->
+    <a class="tap"
+       href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=BUC%20Camp%2026%20-%20Pentecost&dates=20260702T120000Z/20260704T120000Z&details=BUC%20Camp%2026%20Pentecost%20-%20Scripture%20Setting%20Acts%202%20(KJV)&location=458%20Phippen%20Rd,%20Wellsboro,%20PA%2016901"
+       target="_blank"
+       rel="noopener">
+      <img class="panel"
+           src="assets/date.jpg"
+           alt="July 2-4, 2026 - Tap to add to calendar" />
+    </a>
+
+    <!-- Location -->
+    <a class="tap"
+       href="https://www.google.com/maps/dir/?api=1&destination=458%20Phippen%20Rd,%20Wellsboro,%20PA%2016901&travelmode=driving"
+       target="_blank"
+       rel="noopener">
+      <img class="panel"
+           src="assets/location.jpg"
+           alt="Camp Location - Tap for directions" />
+    </a>
+
+    <!-- Scripture -->
+    <a class="tap"
+       href="https://www.bible.com/bible/1/ACT.2.KJV"
+       target="_blank"
+       rel="noopener">
+      <img class="panel"
+           src="assets/scripture.jpg"
+           alt="Acts 2 KJV - Tap to open in Bible app" />
+    </a>
+
+  </section>
+
+</main>
+
+<!-- ================= Bottom Navigation ================= -->
+<nav class="bottomNav" aria-label="Bottom navigation">
+  <div class="bottomNavInner">
+
+    <a href="info.html" class="navItem">
+      <svg class="icon" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="9"></circle>
+        <path d="M12 10v6"></path>
+        <circle cx="12" cy="7" r="1"></circle>
+      </svg>
+      <span>Camp<br>Info</span>
+    </a>
+
+    <a href="bring.html" class="navItem">
+      <svg class="icon" viewBox="0 0 24 24">
+        <rect x="4" y="8" width="16" height="10" rx="2"></rect>
+        <path d="M9 8V6a3 3 0 0 1 6 0v2"></path>
+      </svg>
+      <span>What to<br>Bring</span>
+    </a>
+
+    <a href="registration.html" class="navItem">
+      <svg class="icon" viewBox="0 0 24 24">
+        <rect x="4" y="3" width="14" height="18" rx="2"></rect>
+        <line x1="7" y1="8" x2="15" y2="8"></line>
+        <line x1="7" y1="12" x2="15" y2="12"></line>
+        <line x1="7" y1="16" x2="12" y2="16"></line>
+        <path d="M18 14l2 2-5 5H13v-2z"></path>
+      </svg>
+      <span>Registration</span>
+    </a>
+
+    <a href="quiz.html" class="navItem">
+      <svg class="icon" viewBox="0 0 24 24">
+        <path d="M8 3h8l1 3h3v15H4V6h3z"></path>
+        <path d="M9 12l2 2 4-4"></path>
+      </svg>
+      <span>Quiz<br>Station</span>
+    </a>
+
+  </div>
+</nav>
+<!-- ====================================================== -->
+
+<script>
+(function(){
+  const overlay = document.getElementById("introOverlay");
+  const video   = document.getElementById("introVideo");
+  const start   = document.getElementById("startIntro");
+  const skip    = document.getElementById("skipIntro");
+  const controls = document.querySelector(".introControls");
+
+  if(!overlay || !video) return;
+
+  const KEY = "buc_intro_seen_v1";
+
+  // If already seen, hide intro immediately
+  if(localStorage.getItem(KEY) === "1"){
+    overlay.style.display = "none";
+    return;
+  }
+
+  function closeIntro(){
+    overlay.style.display = "none";
+    try { video.pause(); } catch(e){}
+  }
+
+  // Tap-to-start (plays WITH SOUND)
+  start.addEventListener("click", async () => {
+    try{
+      video.muted = false;
+      video.volume = 1.0;
+      await video.play();
+      if(controls) controls.style.display = "none";
+    }catch(e){
+      console.log("Play blocked:", e);
+    }
+  });
+
+  // Skip button
+  skip.addEventListener("click", () => {
+    localStorage.setItem(KEY, "1");
+    closeIntro();
+  });
+
+  // When video finishes
+  video.addEventListener("ended", () => {
+    localStorage.setItem(KEY, "1");
+    closeIntro();
+  });
+
+})();
+</script>
+
+</body>
+</html>
