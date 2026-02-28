@@ -329,6 +329,7 @@ input, select, textarea{
   position: absolute;
   inset: 0;
   background: rgba(0,0,0,0.65);
+ pointer-events: none; 
 }
 
 .introVideo{
@@ -338,6 +339,7 @@ input, select, textarea{
   height: 100%;
   object-fit: cover;
   z-index: 2;
+pointer-events: none;
 }
 
 .introControls{
@@ -345,6 +347,7 @@ input, select, textarea{
   left: 50%;
   bottom: 28px;
   transform: translateX(-50%);
+z-index: 10; 
 
   display: flex;
   flex-direction: column;      /* Start on top, Skip on bottom */
