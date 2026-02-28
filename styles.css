@@ -10,25 +10,31 @@
   --navActive: #ff8c42;
 }
 
-* { box-sizing: border-box; }
-html, body { height: 100%; }
+*{ box-sizing: border-box; }
+html, body{ height: 100%; }
 
 body{
   margin: 0;
   font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
   background: #0b0412;
+  overflow-x: hidden;
 }
 
-/* Page shell */
+/* =========================
+   PAGE SHELL (FIX CUT-OFF)
+   - allow vertical scrolling
+   - keep background + nav fixed
+   ========================= */
 .screen{
-  min-height: 100vh;
+  min-height: 100svh;          /* better on mobile than 100vh */
   position: relative;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: visible;         /* IMPORTANT: was hidden before */
 }
 
 /* Background image (never steal taps) */
 .bg{
-  position: absolute;
+  position: fixed;             /* stays put while you scroll */
   inset: 0;
   background-image: url("assets/bg.jpg");
   background-size: cover;
@@ -36,6 +42,7 @@ body{
   filter: saturate(1.1) contrast(1.05);
   transform: scale(1.03);
   pointer-events: none;
+  z-index: 0;
 }
 
 /* Dark overlay (never steal taps) */
@@ -57,7 +64,10 @@ body{
   z-index: 2;
   max-width: var(--maxw);
   margin: 0 auto;
-  padding: 14px 12px calc(var(--navH) + 18px);
+
+  /* IMPORTANT: extra space for bottom nav + safe area */
+  padding: 14px 12px calc(var(--navH) + env(safe-area-inset-bottom) + 22px);
+
   display: grid;
   gap: 12px;
 }
@@ -83,9 +93,7 @@ body{
   transition: 0.1s ease;
 }
 
-a img.panel{
-  cursor: pointer;
-}
+a img.panel{ cursor: pointer; }
 
 /* ---------- Buttons / Nav (if used on any page) ---------- */
 .nav{
@@ -108,9 +116,7 @@ a img.panel{
   backdrop-filter: blur(8px);
 }
 
-.navBtn:active{
-  transform: scale(0.99);
-}
+.navBtn:active{ transform: scale(0.99); }
 
 /* ---------- Registration Form Card ---------- */
 .formCard{
@@ -123,9 +129,7 @@ a img.panel{
   color: #fff;
 }
 
-.formCard h2{
-  margin: 4px 0 12px;
-}
+.formCard h2{ margin: 4px 0 12px; }
 
 label{
   display: grid;
@@ -152,7 +156,6 @@ input, select, textarea{
 /* =========================================================
    WHAT TO BRING — 2x2 GRID
    ========================================================= */
-
 .grid{
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -215,15 +218,17 @@ input, select, textarea{
 }
 
 /* =========================================================
-   BOTTOM NAV
+   BOTTOM NAV (fixed)
    ========================================================= */
-
 .bottomNav{
   position: fixed;
   left: 0;
   right: 0;
   bottom: 0;
-  height: var(--navH);
+
+  /* include safe-area inset so it never hides behind phone UI */
+  padding-bottom: env(safe-area-inset-bottom);
+  height: calc(var(--navH) + env(safe-area-inset-bottom));
 
   background: var(--navBg);
   backdrop-filter: blur(18px);
@@ -239,8 +244,8 @@ input, select, textarea{
 .bottomNavInner{
   width: 100%;
   max-width: var(--maxw);
+  height: var(--navH);
 
-  height: 100%;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
 
@@ -294,7 +299,6 @@ input, select, textarea{
 /* =========================================================
    SCRIPTURE LINK (if used)
    ========================================================= */
-
 .scriptureLink{
   text-decoration: none;
   color: #ffb347;
@@ -304,14 +308,12 @@ input, select, textarea{
   border-bottom: 1px solid rgba(255,255,255,0.08);
   transition: 0.2s ease;
 }
-
 .scriptureLink:hover{ color: #ffffff; }
 .scriptureLink:active{ transform: scale(0.97); }
 
 /* =========================================================
-   INTRO VIDEO OVERLAY (FIXED + SMALLER BUTTONS)
+   INTRO VIDEO OVERLAY (clicks fixed + title position)
    ========================================================= */
-
 .introOverlay{
   position: fixed;
   inset: 0;
@@ -323,16 +325,17 @@ input, select, textarea{
   justify-content: center;
 }
 
-/* Dark overlay layer */
+/* Dark overlay layer (never blocks taps) */
 .introOverlay::before{
   content: "";
   position: absolute;
   inset: 0;
   background: rgba(0,0,0,0.65);
-z-index: 1;
- pointer-events: none; 
+  z-index: 1;
+  pointer-events: none;
 }
 
+/* Video sits above dark overlay */
 .introVideo{
   position: absolute;
   inset: 0;
@@ -340,13 +343,37 @@ z-index: 1;
   height: 100%;
   object-fit: cover;
   z-index: 2;
-pointer-events: none;
+
+  /* we don’t need to tap the video itself */
+  pointer-events: none;
 }
 
+/* Title (about 1/4 down) */
+.introBackgroundTitle{
+  position: absolute;
+  top: 18vh;                   /* ~1/4 down */
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 6;
+
+  font-size: 2rem;
+  font-weight: 900;
+  letter-spacing: 1px;
+  color: #ffffff;
+  text-align: center;
+
+  text-shadow:
+    0 4px 12px rgba(0,0,0,0.8),
+    0 0 25px rgba(255,140,66,0.6);
+
+  pointer-events: none;        /* title never blocks button taps */
+}
+
+/* Controls block (buttons clickable!) */
 .introControls{
   position: absolute;
   left: 50%;
-  bottom: 28px;
+  bottom: calc(28px + env(safe-area-inset-bottom));
   transform: translateX(-50%);
 
   display: flex;
@@ -359,14 +386,15 @@ pointer-events: none;
 
   background: linear-gradient(to top, rgba(0,0,0,0.55), rgba(0,0,0,0.0));
   border-radius: 18px;
-z-index: 5;
 
+  z-index: 7;                  /* ABOVE video + overlay */
+  pointer-events: auto;
 }
 
 .startIntro,
 .skipIntro{
-  width: auto;                 /* NOT full-width */
-  min-width: 190px;            /* smaller but consistent */
+  width: auto;
+  min-width: 190px;
   max-width: 240px;
   padding: 11px 18px;
 
@@ -377,7 +405,10 @@ z-index: 5;
   display: inline-flex;
   justify-content: center;
   align-items: center;
+
   cursor: pointer;
+  pointer-events: auto;
+  touch-action: manipulation;
 }
 
 .startIntro{
@@ -402,7 +433,6 @@ z-index: 5;
 /* =========================================================
    QUIZ PAGE EXTRAS
    ========================================================= */
-
 .cardGlass{
   border-radius: 22px;
   padding: 16px;
@@ -513,9 +543,6 @@ z-index: 5;
 
 .tipLink:active{ opacity: .9; }
 
-/* leave room for bottom nav */
-.bottomSpacer{ height: 92px; }
-
 /* Page banners */
 .pageBanner{
   width: 85%;
@@ -544,31 +571,4 @@ z-index: 5;
 .vvText{
   margin: 0 0 12px 0;
   line-height: 1.4;
-}
-
-.introTitle{
-  color: #fff;
-  font-size: 1.4rem;
-  font-weight: 900;
-  text-align: center;
-  margin-bottom: 6px;
-  letter-spacing: .5px;
-}
-
-.introBackgroundTitle{
-  position: absolute;
-  top: 18vh;
-  left: 50%;
-  transform: translate(-50%);
-  z-index: 4;
-
-  font-size: 2rem;
-  font-weight: 900;
-  letter-spacing: 1px;
-  color: #ffffff;
-  text-align: center;
-
-  text-shadow:
-    0 4px 12px rgba(0,0,0,0.8),
-    0 0 25px rgba(255,140,66,0.6);
 }
