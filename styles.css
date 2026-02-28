@@ -318,7 +318,7 @@ input, select, textarea{
   z-index: 9999;
 
   /* Use your header as fallback background */
-  background: url("assets/header.jpg") center / cover no-repeat;
+  background: url("assets/bg.jpg") center / cover no-repeat;
 
   display: flex;
   align-items: center;
