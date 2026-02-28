@@ -317,23 +317,27 @@ input, select, textarea{
   inset: 0;
   z-index: 9999;
 
-  /* Use your header as fallback background */
-  background: url("assets/bg.jpg") center / cover no-repeat;
-
+  background: url("assets/header.jpg") center / cover no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-/* Soft dark overlay */
+/* Dark overlay layer */
 .introOverlay::before{
-display: none;
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.65);
 }
 
 .introVideo{
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
+  z-index: 2;
 }
 
 .introControls{
