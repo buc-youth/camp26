@@ -545,3 +545,21 @@ display: none;
   margin-bottom: 6px;
   letter-spacing: .5px;
 }
+
+.introBackgroundTitle{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+
+  font-size: 2rem;
+  font-weight: 900;
+  letter-spacing: 1px;
+  color: #ffffff;
+  text-align: center;
+
+  text-shadow:
+    0 4px 12px rgba(0,0,0,0.8),
+    0 0 25px rgba(255,140,66,0.6);
+}
