@@ -35,7 +35,18 @@ self.addEventListener("activate", (event) => {
 });
 
 self.addEventListener("fetch", (event) => {
+  const req = event.request;
+
+  // Network-first for video/audio so playback doesn’t freeze due to stale cache
+  if (req.destination === "video" || req.destination === "audio") {
+    event.respondWith(
+      fetch(req).catch(() => caches.match(req))
+    );
+    return;
+  }
+
+  // Cache-first for everything else (fast + works offline)
   event.respondWith(
-    caches.match(event.request).then((cached) => cached || fetch(event.request))
+    caches.match(req).then((cached) => cached || fetch(req))
   );
 });
