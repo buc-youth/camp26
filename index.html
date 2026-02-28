@@ -128,18 +128,19 @@ my
 
 <script>
 (function(){
-  const overlay = document.getElementById("introOverlay");
-  const video   = document.getElementById("introVideo");
-  const start   = document.getElementById("startIntro");
-  const skip    = document.getElementById("skipIntro");
+  const overlay  = document.getElementById("introOverlay");
+  const video    = document.getElementById("introVideo");
+  const startBtn = document.getElementById("startIntro");
+  const skipBtn  = document.getElementById("skipIntro");
   const controls = document.querySelector(".introControls");
 
   if(!overlay || !video) return;
 
-  const KEY = "buc_intro_seen_v1";
+  // Session-only intro (resets when browser/app fully closes)
+  const KEY = "buc_intro_seen_session_v1";
 
-  // If already seen, hide intro immediately
-  if(localStorage.getItem(KEY) === "1"){
+  // If already seen during this visit, hide immediately
+  if (sessionStorage.getItem(KEY) === "1") {
     overlay.style.display = "none";
     return;
   }
@@ -149,8 +150,12 @@ my
     try { video.pause(); } catch(e){}
   }
 
-  // Tap-to-start (plays WITH SOUND)
-  start.addEventListener("click", async () => {
+  function markSeen(){
+    sessionStorage.setItem(KEY, "1");
+  }
+
+  // Tap to start (with sound)
+  startBtn?.addEventListener("click", async () => {
     try{
       video.muted = false;
       video.volume = 1.0;
@@ -162,14 +167,20 @@ my
   });
 
   // Skip button
-  skip.addEventListener("click", () => {
-    localStorage.setItem(KEY, "1");
+  skipBtn?.addEventListener("click", () => {
+    markSeen();
     closeIntro();
   });
 
   // When video finishes
   video.addEventListener("ended", () => {
-    localStorage.setItem(KEY, "1");
+    markSeen();
+    closeIntro();
+  });
+
+  // Safety fallback
+  video.addEventListener("error", () => {
+    markSeen();
     closeIntro();
   });
 
