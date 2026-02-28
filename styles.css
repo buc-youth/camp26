@@ -2,6 +2,12 @@
   --maxw: 520px;
   --shadow: 0 10px 25px rgba(0,0,0,.45);
   --radius: 14px;
+
+  --navH: 76px;
+  --navBg: rgba(10, 5, 18, 0.86);
+  --navBorder: rgba(255,255,255,0.08);
+  --navText: rgba(255,255,255,0.70);
+  --navActive: #ff8c42;
 }
 
 * { box-sizing: border-box; }
@@ -51,7 +57,7 @@ body{
   z-index: 2;
   max-width: var(--maxw);
   margin: 0 auto;
-  padding: 14px 12px 20px;
+  padding: 14px 12px calc(var(--navH) + 18px);
   display: grid;
   gap: 12px;
 }
@@ -144,10 +150,9 @@ input, select, textarea{
 }
 
 /* =========================================================
-   WHAT TO BRING — YOUTH CAMP APP STORE ENERGY (2x2 GRID)
+   WHAT TO BRING — 2x2 GRID
    ========================================================= */
 
-/* True 2x2 grid */
 .grid{
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -155,7 +160,6 @@ input, select, textarea{
   margin-top: 14px;
 }
 
-/* Premium glass cards */
 .card{
   background: rgba(0, 0, 0, 0.72);
   backdrop-filter: blur(14px);
@@ -174,11 +178,9 @@ input, select, textarea{
 
 .card:active{
   transform: scale(0.97);
-  box-shadow:
-    0 8px 20px rgba(0,0,0,0.7);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.7);
 }
 
-/* Section title */
 .card h3{
   margin: 0 0 14px 0;
   font-size: 1.2rem;
@@ -188,7 +190,6 @@ input, select, textarea{
   position: relative;
 }
 
-/* Fire accent underline */
 .card h3::after{
   content: "";
   display: block;
@@ -199,7 +200,6 @@ input, select, textarea{
   background: linear-gradient(to right, #ff6a00, #ffb347);
 }
 
-/* Items (icons only, no bullets) */
 .items div{
   margin-bottom: 10px;
   font-size: 0.95rem;
@@ -207,7 +207,6 @@ input, select, textarea{
   color: #e8e8e8;
 }
 
-/* Mobile tweak if needed */
 @media (max-width: 380px){
   .grid{ gap: 12px; }
   .card{ padding: 16px; min-height: 160px; }
@@ -216,21 +215,8 @@ input, select, textarea{
 }
 
 /* =========================================================
-   BOTTOM NAV (fixed, outlined icons like your mockup)
+   BOTTOM NAV
    ========================================================= */
-
-:root{
-  --navH: 76px;
-  --navBg: rgba(10, 5, 18, 0.86);
-  --navBorder: rgba(255,255,255,0.08);
-  --navText: rgba(255,255,255,0.70);
-  --navActive: #ff8c42;
-}
-
-/* IMPORTANT: leave space so content doesn't hide under the nav */
-.stack{
-  padding-bottom: calc(var(--navH) + 18px);
-}
 
 .bottomNav{
   position: fixed;
@@ -259,7 +245,7 @@ input, select, textarea{
   grid-template-columns: repeat(4, 1fr);
 
   padding: 8px 10px 12px;
-  gap: 6px; /* tiny breathing room */
+  gap: 6px;
 }
 
 .bottomNav .navItem{
@@ -276,7 +262,7 @@ input, select, textarea{
   font-size: 0.75rem;
   letter-spacing: 0.2px;
 
-  border-radius: 14px; /* makes tap area feel premium */
+  border-radius: 14px;
   transition: transform 0.12s ease, background 0.12s ease, color 0.12s ease;
 }
 
@@ -285,7 +271,6 @@ input, select, textarea{
   text-align: center;
 }
 
-/* Outline icons */
 .bottomNav .icon{
   width: 22px;
   height: 22px;
@@ -296,17 +281,19 @@ input, select, textarea{
   stroke-linejoin: round;
 }
 
-/* Active tab */
 .bottomNav .navItem.active{
   color: var(--navActive);
   background: rgba(255, 140, 66, 0.10);
 }
 
-/* Tap feedback */
 .bottomNav .navItem:active{
   transform: scale(0.97);
   background: rgba(255,255,255,0.06);
 }
+
+/* =========================================================
+   SCRIPTURE LINK (if used)
+   ========================================================= */
 
 .scriptureLink{
   text-decoration: none;
@@ -318,57 +305,33 @@ input, select, textarea{
   transition: 0.2s ease;
 }
 
-.scriptureLink:hover{
-  color: #ffffff;
-}
+.scriptureLink:hover{ color: #ffffff; }
+.scriptureLink:active{ transform: scale(0.97); }
 
-.scriptureLink:active{
-  transform: scale(0.97);
-}
+/* =========================================================
+   INTRO VIDEO OVERLAY (FIXED + SMALLER BUTTONS)
+   ========================================================= */
 
-/* ===== Intro Video Overlay ===== */
 .introOverlay{
   position: fixed;
   inset: 0;
   z-index: 9999;
-  background: #000;
+
+  /* Use your header as fallback background */
+  background: url("assets/header.jpg") center / cover no-repeat;
+
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.introVideo{
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-/* Skip button */
-.skipIntro{
+/* Soft dark overlay */
+.introOverlay::before{
+  content: "";
   position: absolute;
-  top: 14px;
-  right: 14px;
-  padding: 10px 14px;
-  border-radius: 999px;
-  border: 1px solid rgba(255,255,255,0.25);
-  background: rgba(0,0,0,0.35);
-  color: #fff;
-  font-weight: 700;
-  backdrop-filter: blur(10px);
-}
-
-.skipIntro:active{
-  transform: scale(0.97);
-}
-
-.introOverlay{
-  position: fixed;
   inset: 0;
-  z-index: 9999;
-  background: #000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  background: rgba(0,0,0,0.65);
+  backdrop-filter: blur(6px);
 }
 
 .introVideo{
@@ -379,44 +342,61 @@ input, select, textarea{
 
 .introControls{
   position: absolute;
-  inset: 0;
+  left: 50%;
+  bottom: 28px;
+  transform: translateX(-50%);
+
   display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
+  flex-direction: column;      /* Start on top, Skip on bottom */
   align-items: center;
   gap: 10px;
-  padding: 18px 16px 26px;
+
+  padding: 14px 12px;
+  width: auto;
+
   background: linear-gradient(to top, rgba(0,0,0,0.55), rgba(0,0,0,0.0));
+  border-radius: 18px;
+}
+
+.startIntro,
+.skipIntro{
+  width: auto;                 /* NOT full-width */
+  min-width: 190px;            /* smaller but consistent */
+  max-width: 240px;
+  padding: 11px 18px;
+
+  border-radius: 999px;
+  font-weight: 800;
+  letter-spacing: .3px;
+
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
 }
 
 .startIntro{
-  width: min(420px, 92%);
-  padding: 14px 16px;
-  border-radius: 999px;
   border: none;
-  font-weight: 800;
-  letter-spacing: .3px;
   color: #140718;
   background: linear-gradient(135deg, #ff6a00, #ffb347);
   box-shadow: 0 10px 25px rgba(0,0,0,.55);
 }
-.startIntro:active{ transform: scale(0.98); }
 
 .skipIntro{
-  width: min(420px, 92%);
-  padding: 12px 16px;
-  border-radius: 999px;
   border: 1px solid rgba(255,255,255,0.28);
   background: rgba(255,255,255,0.10);
   color: #fff;
-  font-weight: 700;
   backdrop-filter: blur(10px);
 }
-.skipIntro:active{ transform: scale(0.98); }
 
-/* =========================
+.startIntro:active,
+.skipIntro:active{
+  transform: scale(0.98);
+}
+
+/* =========================================================
    QUIZ PAGE EXTRAS
-   ========================= */
+   ========================================================= */
 
 .cardGlass{
   border-radius: 22px;
@@ -460,9 +440,7 @@ input, select, textarea{
   line-height: 1.35;
 }
 
-.cardBody b{
-  color: rgba(255,255,255,0.95);
-}
+.cardBody b{ color: rgba(255,255,255,0.95); }
 
 .verseList{
   position: relative;
@@ -486,9 +464,7 @@ input, select, textarea{
   border: 1px solid rgba(255,255,255,0.10);
 }
 
-.verseLink:active{
-  transform: scale(0.99);
-}
+.verseLink:active{ transform: scale(0.99); }
 
 .versePill{
   font-weight: 900;
@@ -514,6 +490,7 @@ input, select, textarea{
   flex: none;
   opacity: .95;
 }
+
 .tipIcon *{
   stroke: rgba(255,255,255,0.92);
   stroke-width: 2;
@@ -529,14 +506,13 @@ input, select, textarea{
   border-bottom: 1px solid rgba(255,179,71,0.35);
 }
 
-.tipLink:active{
-  opacity: .9;
-}
+.tipLink:active{ opacity: .9; }
 
 /* leave room for bottom nav */
 .bottomSpacer{ height: 92px; }
 
-.pageBanner {
+/* Page banners */
+.pageBanner{
   width: 85%;
   max-width: 520px;
   height: auto;
@@ -545,6 +521,7 @@ input, select, textarea{
   border-radius: 18px;
 }
 
+/* Verse Vault icon block */
 .vvWrap{
   text-align: center;
   margin-top: 8px;
@@ -562,4 +539,13 @@ input, select, textarea{
 .vvText{
   margin: 0 0 12px 0;
   line-height: 1.4;
+}
+
+.introTitle{
+  color: #fff;
+  font-size: 1.4rem;
+  font-weight: 900;
+  text-align: center;
+  margin-bottom: 6px;
+  letter-spacing: .5px;
 }
