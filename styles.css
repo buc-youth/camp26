@@ -327,11 +327,7 @@ input, select, textarea{
 
 /* Soft dark overlay */
 .introOverlay::before{
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,0.65);
-  
+display: none;
 }
 
 .introVideo{
