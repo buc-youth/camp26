@@ -1,0 +1,432 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>BUC Camp 26 • Quiz Station</title>
+<link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+  <link rel="manifest" href="manifest.webmanifest" />
+  <meta name="theme-color" content="#2b0a3d" />
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- Small page-specific styles (keeps your main styles.css clean) -->
+  <style>
+    .accordion { display: grid; gap: 12px; margin-top: 10px; }
+
+    /* Make details look like your glass cards */
+    details.accItem{
+      border-radius: 18px;
+      overflow: hidden;
+      background: rgba(255,255,255,0.14);
+      border: 1px solid rgba(255,255,255,0.18);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 10px 25px rgba(0,0,0,.35);
+    }
+
+    /* remove default marker */
+    details.accItem summary{
+      list-style: none;
+      cursor: pointer;
+      padding: 14px 14px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 10px;
+      user-select: none;
+    }
+    details.accItem summary::-webkit-details-marker{ display:none; }
+
+    .accLeft{
+      display: grid;
+      gap: 6px;
+      min-width: 0;
+    }
+
+    .accTop{
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .versePill{
+      display: inline-flex;
+      align-items: center;
+      padding: 7px 10px;
+      border-radius: 999px;
+      font-weight: 800;
+      letter-spacing: .3px;
+      background: rgba(0,0,0,0.25);
+      border: 1px solid rgba(255,255,255,0.15);
+      color: #fff;
+      font-size: .95rem;
+      white-space: nowrap;
+    }
+
+    .accHint{
+      opacity: .88;
+      font-size: .95rem;
+      line-height: 1.25;
+      color: rgba(255,255,255,0.92);
+    }
+
+    .openBtn{
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 10px 12px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 800;
+      color: #1b0a14;
+      background: rgba(255,255,255,0.78);
+      border: 1px solid rgba(255,255,255,0.25);
+      box-shadow: 0 8px 18px rgba(0,0,0,.18);
+      white-space: nowrap;
+    }
+    .openBtn:active{ transform: scale(.98); }
+
+    .chev{
+      width: 22px; height: 22px;
+      border-radius: 999px;
+      display: grid; place-items:center;
+      background: rgba(0,0,0,0.25);
+      border: 1px solid rgba(255,255,255,0.15);
+    }
+    .chev svg{
+      width: 16px; height: 16px;
+      stroke: #fff; fill: none;
+      stroke-width: 2.2;
+      transition: transform .18s ease;
+    }
+    details[open] .chev svg{ transform: rotate(180deg); }
+
+    .accBody{
+      padding: 0 14px 14px;
+      color: rgba(255,255,255,0.95);
+      line-height: 1.5;
+      font-size: 1rem;
+    }
+
+    .accDivider{
+      height: 1px;
+      background: rgba(255,255,255,0.14);
+      margin: 0 14px 12px;
+    }
+
+    .tipRow{
+      display:flex;
+      gap:12px;
+      align-items:flex-start;
+    }
+    .tipIcon{
+      width: 28px; height: 28px;
+      stroke: rgba(255,255,255,0.92);
+      fill: none;
+      stroke-width: 2.2;
+      flex: 0 0 auto;
+      margin-top: 2px;
+      opacity: .95;
+    }
+    .tipLink{
+      display:inline-block;
+      margin-top: 8px;
+      padding: 10px 12px;
+      border-radius: 999px;
+      text-decoration:none;
+      font-weight:800;
+      background: rgba(255,255,255,0.78);
+      color: #1b0a14;
+      border: 1px solid rgba(255,255,255,0.25);
+    }
+    .tipLink:active{ transform: scale(.98); }
+  </style>
+</head>
+
+<body>
+  <main class="screen" role="main" aria-label="BUC Camp 26 Quiz Station">
+    <div class="bg" aria-hidden="true"></div>
+
+    <section class="stack">
+
+      <!-- Banner (tap to home) -->
+      <a class="tap" href="index.html" aria-label="Back to home">
+        <img class="panel" src="assets/header.jpg" alt="BUC Camp 26 - Pentecost" />
+      </a>
+
+  
+
+      <!-- =========================
+           QUOTATION STATION CARD
+           ========================= -->
+      <article class="cardGlass" aria-label="Quotation Station">
+        
+        <div class="cardBody">
+
+          <!-- Optional header image inside the card -->
+          <img src="assets/quote.png" alt="Quotation Station" class="pageBanner" />
+
+          <div class="accordion">
+
+            <!-- Acts 2:1–4 -->
+            <details class="accItem">
+              <summary>
+                <div class="accLeft">
+                  <div class="accTop">
+                    <span class="versePill">Acts 2:1–4</span>
+                    <span class="accHint">The Spirit is poured out — wind + fire.</span>
+                  </div>
+                </div>
+
+                <div style="display:flex; align-items:center; gap:10px;">
+                  <a class="openBtn"
+                     href="https://www.bible.com/bible/1/ACT.2.1-4.KJV"
+                     target="_blank" rel="noopener"
+                     onclick="event.stopPropagation();">
+                    Open
+                  </a>
+
+                  <span class="chev" aria-hidden="true">
+                    <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+                  </span>
+                </div>
+              </summary>
+
+              <div class="accDivider"></div>
+              <div class="accBody">
+                <b>1</b> And when the day of Pentecost was fully come, they were all with one accord in one place.<br>
+                <b>2</b> And suddenly there came a sound from heaven as of a rushing mighty wind, and it filled all the house where they were sitting.<br>
+                <b>3</b> And there appeared unto them cloven tongues like as of fire, and it sat upon each of them.<br>
+                <b>4</b> And they were all filled with the Holy Ghost, and began to speak with other tongues, as the Spirit gave them utterance.
+              </div>
+            </details>
+
+            <!-- Acts 2:17–21 -->
+            <details class="accItem">
+              <summary>
+                <div class="accLeft">
+                  <div class="accTop">
+                    <span class="versePill">Acts 2:17–21</span>
+                    <span class="accHint">Prophecy fulfilled — “I will pour out my Spirit…”</span>
+                  </div>
+                </div>
+
+                <div style="display:flex; align-items:center; gap:10px;">
+                  <a class="openBtn"
+                     href="https://www.bible.com/bible/1/ACT.2.17-21.KJV"
+                     target="_blank" rel="noopener"
+                     onclick="event.stopPropagation();">
+                    Open
+                  </a>
+
+                  <span class="chev" aria-hidden="true">
+                    <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+                  </span>
+                </div>
+              </summary>
+
+              <div class="accDivider"></div>
+              <div class="accBody">
+                <b>17</b> And it shall come to pass in the last days, saith God, I will pour out of my Spirit upon all flesh: and your sons and your daughters shall prophesy, and your young men shall see visions, and your old men shall dream dreams:<br>
+                <b>18</b> And on my servants and on my handmaidens I will pour out in those days of my Spirit; and they shall prophesy:<br>
+                <b>19</b> And I will shew wonders in heaven above, and signs in the earth beneath; blood, and fire, and vapour of smoke:<br>
+                <b>20</b> The sun shall be turned into darkness, and the moon into blood, before that great and notable day of the Lord come:<br>
+                <b>21</b> And it shall come to pass, that whosoever shall call on the name of the Lord shall be saved.
+              </div>
+            </details>
+
+            <!-- Acts 2:37–39 -->
+            <details class="accItem">
+              <summary>
+                <div class="accLeft">
+                  <div class="accTop">
+                    <span class="versePill">Acts 2:37–39</span>
+                    <span class="accHint">Response: repent, be baptized, receive the gift.</span>
+                  </div>
+                </div>
+
+                <div style="display:flex; align-items:center; gap:10px;">
+                  <a class="openBtn"
+                     href="https://www.bible.com/bible/1/ACT.2.37-39.KJV"
+                     target="_blank" rel="noopener"
+                     onclick="event.stopPropagation();">
+                    Open
+                  </a>
+
+                  <span class="chev" aria-hidden="true">
+                    <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+                  </span>
+                </div>
+              </summary>
+
+              <div class="accDivider"></div>
+              <div class="accBody">
+                <b>37</b> Now when they heard this, they were pricked in their heart, and said unto Peter and to the rest of the apostles, Men and brethren, what shall we do?<br>
+                <b>38</b> Then Peter said unto them, Repent, and be baptized every one of you in the name of Jesus Christ for the remission of sins, and ye shall receive the gift of the Holy Ghost.<br>
+                <b>39</b> For the promise is unto you, and to your children, and to all that are afar off, even as many as the Lord our God shall call.
+              </div>
+            </details>
+
+            <!-- Joel 2:28–29 -->
+            <details class="accItem">
+              <summary>
+                <div class="accLeft">
+                  <div class="accTop">
+                    <span class="versePill">Joel 2:28–29</span>
+                    <span class="accHint">Promise: Spirit poured out on all flesh.</span>
+                  </div>
+                </div>
+
+                <div style="display:flex; align-items:center; gap:10px;">
+                  <a class="openBtn"
+                     href="https://www.bible.com/bible/1/JOL.2.28-29.KJV"
+                     target="_blank" rel="noopener"
+                     onclick="event.stopPropagation();">
+                    Open
+                  </a>
+
+                  <span class="chev" aria-hidden="true">
+                    <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+                  </span>
+                </div>
+              </summary>
+
+              <div class="accDivider"></div>
+              <div class="accBody">
+                <b>28</b> And it shall come to pass afterward, that I will pour out my spirit upon all flesh; and your sons and your daughters shall prophesy, your old men shall dream dreams, your young men shall see visions:<br>
+                <b>29</b> And also upon the servants and upon the handmaids in those days will I pour out my spirit.
+              </div>
+            </details>
+
+            <!-- Joel 2:32 -->
+            <details class="accItem">
+              <summary>
+                <div class="accLeft">
+                  <div class="accTop">
+                    <span class="versePill">Joel 2:32</span>
+                    <span class="accHint">“Whosoever shall call…” deliverance.</span>
+                  </div>
+                </div>
+
+                <div style="display:flex; align-items:center; gap:10px;">
+                  <a class="openBtn"
+                     href="https://www.bible.com/bible/1/JOL.2.32.KJV"
+                     target="_blank" rel="noopener"
+                     onclick="event.stopPropagation();">
+                    Open
+                  </a>
+
+                  <span class="chev" aria-hidden="true">
+                    <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+                  </span>
+                </div>
+              </summary>
+
+              <div class="accDivider"></div>
+              <div class="accBody">
+                And it shall come to pass, that whosoever shall call on the name of the Lord shall be delivered: for in mount Zion and in Jerusalem shall be deliverance, as the Lord hath said, and in the remnant whom the Lord shall call.
+              </div>
+            </details>
+
+          </div>
+        </div>
+      </article>
+
+      <!-- =========================
+           3) PRO TIP CARD
+           ========================= -->
+      <article class="cardGlass" aria-label="Pro tip">
+        <h2 class="cardTitle">Pro Tip</h2>
+
+        <div class="cardBody">
+          <div class="tipRow">
+            <svg class="tipIcon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M9 18h6"></path>
+              <path d="M10 22h4"></path>
+              <path d="M8 14a6 6 0 1 1 8 0c-1 1-1 2-1 3H9c0-1 0-2-1-3z"></path>
+            </svg>
+
+            <div class="vvWrap">
+               <a class="tap"
+      href="https://play.google.com/store/apps/details?id=com.njambi.versevault"
+     target="_blank" 
+       rel="noopener">
+      <img class="vvIcon"
+           src="assets/vv.png"
+           alt="Verse Vault app" />
+    </a>
+  
+
+  <p class="vvText">
+    <b>Android users:</b> Use <b>Bible Verse Vault</b> to help study quotations and key scriptures.
+  </p>
+
+  <a class="tipLink"
+     href="https://play.google.com/store/apps/details?id=com.njambi.versevault"
+     target="_blank" rel="noopener">
+     Get Bible Verse Vault <br>on Google Play
+  </a>
+
+</div>
+          </div>
+        </div>
+      </article>
+
+      <div class="bottomSpacer"></div>
+    </section>
+  </main>
+
+  <!-- Bottom Navigation (active on Quiz) -->
+  <nav class="bottomNav" aria-label="Bottom navigation">
+    <div class="bottomNavInner">
+
+      <a href="info.html" class="navItem">
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="12" cy="12" r="9"></circle>
+          <path d="M12 10v6"></path>
+          <circle cx="12" cy="7" r="1"></circle>
+        </svg>
+        <span>Camp Info</span>
+      </a>
+
+      <a href="bring.html" class="navItem">
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+          <rect x="4" y="8" width="16" height="10" rx="2"></rect>
+          <path d="M9 8V6a3 3 0 0 1 6 0v2"></path>
+        </svg>
+        <span>What to Bring</span>
+      </a>
+
+      <a href="registration.html" class="navItem">
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+          <rect x="4" y="3" width="14" height="18" rx="2"></rect>
+          <line x1="7" y1="8" x2="15" y2="8"></line>
+          <line x1="7" y1="12" x2="15" y2="12"></line>
+          <line x1="7" y1="16" x2="12" y2="16"></line>
+          <path d="M18 14l2 2-5 5H13v-2z"></path>
+        </svg>
+        <span>Registration</span>
+      </a>
+
+      <a href="quiz.html" class="navItem active">
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M8 3h8l1 3h3v15H4V6h3z"></path>
+          <path d="M9 12l2 2 4-4"></path>
+        </svg>
+        <span>Quiz Corner</span>
+      </a>
+
+    </div>
+  </nav>
+
+  <script>
+    // Make sure tapping the "Open" button never toggles the accordion.
+    document.querySelectorAll('.openBtn').forEach(btn => {
+      btn.addEventListener('click', (e) => e.stopPropagation());
+    });
+  </script>
+</body>
+</html>
