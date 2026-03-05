@@ -29,7 +29,10 @@ body{
   min-height: 100svh;          /* better on mobile than 100vh */
   position: relative;
   overflow-x: hidden;
-  overflow-y: visible;         /* IMPORTANT: was hidden before */
+  overflow-y: visible;    
+display: flex;          /* ADD THIS */
+  flex-direction: column;
+     /* IMPORTANT: was hidden before */
 }
 
 /* Background image (never steal taps) */
@@ -64,6 +67,7 @@ body{
   z-index: 2;
   max-width: var(--maxw);
   margin: 0 auto;
+flex: 1; /*
 
   /* IMPORTANT: extra space for bottom nav + safe area */
   padding: 14px 12px calc(var(--navH) + env(safe-area-inset-bottom) + 22px);
