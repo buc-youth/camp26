@@ -561,8 +561,8 @@ input, select, textarea{
   max-width: 520px;
   height: auto;
   display: block;
-  margin: 0 auto 18px auto;
-  border-radius: 18px;
+  margin: 0 auto 8px auto;
+  border-radius: 8px;
 }
 
 /* Verse Vault icon block */
