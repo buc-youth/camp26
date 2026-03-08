@@ -84,6 +84,15 @@ flex: 1; /*
   box-shadow: var(--shadow);
 }
 
+/* Make date banner larger */
+.tap img[src*="date"]{
+  width: 100%;
+  display: block;
+  margin-top: 18px;
+  margin-bottom: 18px;
+  transform: scale(1.1);
+}
+
 /* Clickable wrapper */
 .tap{
   display: block;
