@@ -12,10 +12,14 @@
   <link rel="stylesheet" href="styles.css" />
 
   <style>
-    .accordion { display: grid; gap: 12px; margin-top: 10px; }
+    .groupAccordion{
+      display: grid;
+      gap: 14px;
+      margin-top: 10px;
+    }
 
-    details.accItem{
-      border-radius: 18px;
+    details.groupCard{
+      border-radius: 20px;
       overflow: hidden;
       background: rgba(255,255,255,0.14);
       border: 1px solid rgba(255,255,255,0.18);
@@ -23,51 +27,104 @@
       box-shadow: 0 10px 25px rgba(0,0,0,.35);
     }
 
-    details.accItem summary{
+    details.groupCard summary{
       list-style: none;
       cursor: pointer;
-      padding: 14px 14px;
+      padding: 16px 16px;
       display: grid;
       grid-template-columns: 1fr auto;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
       user-select: none;
     }
 
-    details.accItem summary::-webkit-details-marker{ display:none; }
+    details.groupCard summary::-webkit-details-marker{
+      display: none;
+    }
 
-    .accLeft{
+    .groupTitleWrap{
       display: grid;
-      gap: 6px;
+      gap: 4px;
       min-width: 0;
     }
 
-    .accTop{
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
+    .groupTitle{
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: .2px;
+    }
+
+    .groupSub{
+      font-size: .95rem;
+      color: rgba(255,255,255,.88);
+      line-height: 1.35;
+    }
+
+    .groupChev{
+      width: 26px;
+      height: 26px;
+      border-radius: 999px;
+      display: grid;
+      place-items: center;
+      background: rgba(0,0,0,0.25);
+      border: 1px solid rgba(255,255,255,0.15);
+      flex: 0 0 auto;
+    }
+
+    .groupChev svg{
+      width: 16px;
+      height: 16px;
+      stroke: #fff;
+      fill: none;
+      stroke-width: 2.2;
+      transition: transform .18s ease;
+    }
+
+    details[open] .groupChev svg{
+      transform: rotate(180deg);
+    }
+
+    .groupBody{
+      padding: 0 16px 16px;
+      color: rgba(255,255,255,0.95);
+      line-height: 1.5;
+      font-size: 1rem;
+    }
+
+    .groupDivider{
+      height: 1px;
+      background: rgba(255,255,255,0.14);
+      margin: 0 16px 14px;
+    }
+
+    .verseList{
+      display: grid;
       gap: 10px;
     }
 
-    .versePill{
-      display: inline-flex;
+    .verseRow{
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 10px;
       align-items: center;
-      padding: 7px 10px;
-      border-radius: 999px;
+      padding: 10px 12px;
+      border-radius: 14px;
+      background: rgba(0,0,0,0.18);
+      border: 1px solid rgba(255,255,255,0.10);
+    }
+
+    .verseRef{
       font-weight: 800;
-      letter-spacing: .3px;
-      background: rgba(0,0,0,0.25);
-      border: 1px solid rgba(255,255,255,0.15);
       color: #fff;
-      font-size: .95rem;
-      white-space: nowrap;
+      letter-spacing: .2px;
     }
 
     .openBtn{
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      padding: 10px 12px;
+      padding: 8px 12px;
       border-radius: 999px;
       text-decoration: none;
       font-weight: 800;
@@ -78,67 +135,13 @@
       white-space: nowrap;
     }
 
-    .openBtn:active{ transform: scale(.98); }
-
-    .chev{
-      width: 22px;
-      height: 22px;
-      border-radius: 999px;
-      display: grid;
-      place-items:center;
-      background: rgba(0,0,0,0.25);
-      border: 1px solid rgba(255,255,255,0.15);
+    .openBtn:active{
+      transform: scale(.98);
     }
 
-    .chev svg{
-      width: 16px;
-      height: 16px;
-      stroke: #fff;
-      fill: none;
-      stroke-width: 2.2;
-      transition: transform .18s ease;
-    }
-
-    details[open] .chev svg{ transform: rotate(180deg); }
-
-    .accBody{
-      padding: 0 14px 14px;
-      color: rgba(255,255,255,0.95);
-      line-height: 1.5;
-      font-size: 1rem;
-    }
-
-    .accDivider{
-      height: 1px;
-      background: rgba(255,255,255,0.14);
-      margin: 0 14px 12px;
-    }
-
-    .sectionHeading{
-      margin: 0 0 8px;
-      font-size: 1.25rem;
-      font-weight: 800;
-      color: #fff;
-    }
-
-    .sectionNote{
-      margin: 0 0 12px;
+    .comingSoonText{
       color: rgba(255,255,255,0.92);
-      line-height: 1.45;
-    }
-
-    .comingSoon{
-      margin-top: 18px;
-      padding: 14px;
-      border-radius: 16px;
-      background: rgba(255,255,255,0.10);
-      border: 1px solid rgba(255,255,255,0.14);
-      color: rgba(255,255,255,0.94);
-      line-height: 1.45;
-    }
-
-    .dividerSpace{
-      height: 10px;
+      line-height: 1.5;
     }
 
     .tipRow{
@@ -170,7 +173,9 @@
       border: 1px solid rgba(255,255,255,0.25);
     }
 
-    .tipLink:active{ transform: scale(.98); }
+    .tipLink:active{
+      transform: scale(.98);
+    }
   </style>
 </head>
 
@@ -187,276 +192,110 @@
       <img src="assets/quote.png" alt="Quotation Station" class="pageBanner" />
 
       <article class="cardGlass" aria-label="Quotation Station">
+        <h2 class="cardTitle">Quotation Station</h2>
+
         <div class="cardBody">
+          <div class="groupAccordion">
 
-          <h2 class="cardTitle">Quotation Station</h2>
-
-          <h3 class="sectionHeading">13 &amp; Under Quotations</h3>
-          <p class="sectionNote">
-            These are the official quotation references currently received for the 13 and under age group.
-          </p>
-
-          <div class="accordion">
-
-            <details class="accItem">
+            <!-- 13 & Under -->
+            <details class="groupCard" open>
               <summary>
-                <div class="accLeft">
-                  <div class="accTop">
-                    <span class="versePill">Acts 2:1</span>
-                  </div>
+                <div class="groupTitleWrap">
+                  <div class="groupTitle">13 &amp; Under Quotations</div>
+                  <div class="groupSub">Tap to view all quotation references for this age group.</div>
                 </div>
-                <div style="display:flex; align-items:center; gap:10px;">
-                  <a class="openBtn"
-                     href="https://www.bible.com/bible/1/ACT.2.1.KJV"
-                     target="_blank" rel="noopener"
-                     onclick="event.stopPropagation();">
-                    Open
-                  </a>
-                  <span class="chev" aria-hidden="true">
-                    <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
-                  </span>
-                </div>
+
+                <span class="groupChev" aria-hidden="true">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M6 9l6 6 6-6"></path>
+                  </svg>
+                </span>
               </summary>
-              <div class="accDivider"></div>
-              <div class="accBody">
-                And when the day of Pentecost was fully come, they were all with one accord in one place.
+
+              <div class="groupDivider"></div>
+
+              <div class="groupBody">
+                <div class="verseList">
+
+                  <div class="verseRow">
+                    <span class="verseRef">Acts 2:1</span>
+                    <a class="openBtn" href="https://www.bible.com/bible/1/ACT.2.1.KJV" target="_blank" rel="noopener">Open</a>
+                  </div>
+
+                  <div class="verseRow">
+                    <span class="verseRef">Acts 2:4</span>
+                    <a class="openBtn" href="https://www.bible.com/bible/1/ACT.2.4.KJV" target="_blank" rel="noopener">Open</a>
+                  </div>
+
+                  <div class="verseRow">
+                    <span class="verseRef">Acts 1:8</span>
+                    <a class="openBtn" href="https://www.bible.com/bible/1/ACT.1.8.KJV" target="_blank" rel="noopener">Open</a>
+                  </div>
+
+                  <div class="verseRow">
+                    <span class="verseRef">Acts 5:3</span>
+                    <a class="openBtn" href="https://www.bible.com/bible/1/ACT.5.3.KJV" target="_blank" rel="noopener">Open</a>
+                  </div>
+
+                  <div class="verseRow">
+                    <span class="verseRef">Hebrews 2:4</span>
+                    <a class="openBtn" href="https://www.bible.com/bible/1/HEB.2.4.KJV" target="_blank" rel="noopener">Open</a>
+                  </div>
+
+                  <div class="verseRow">
+                    <span class="verseRef">Romans 5:5</span>
+                    <a class="openBtn" href="https://www.bible.com/bible/1/ROM.5.5.KJV" target="_blank" rel="noopener">Open</a>
+                  </div>
+
+                  <div class="verseRow">
+                    <span class="verseRef">Romans 15:13</span>
+                    <a class="openBtn" href="https://www.bible.com/bible/1/ROM.15.13.KJV" target="_blank" rel="noopener">Open</a>
+                  </div>
+
+                  <div class="verseRow">
+                    <span class="verseRef">Ephesians 4:30</span>
+                    <a class="openBtn" href="https://www.bible.com/bible/1/EPH.4.30.KJV" target="_blank" rel="noopener">Open</a>
+                  </div>
+
+                  <div class="verseRow">
+                    <span class="verseRef">2 Corinthians 6:6</span>
+                    <a class="openBtn" href="https://www.bible.com/bible/1/2CO.6.6.KJV" target="_blank" rel="noopener">Open</a>
+                  </div>
+
+                  <div class="verseRow">
+                    <span class="verseRef">1 Corinthians 16:8</span>
+                    <a class="openBtn" href="https://www.bible.com/bible/1/1CO.16.8.KJV" target="_blank" rel="noopener">Open</a>
+                  </div>
+
+                </div>
               </div>
             </details>
 
-            <details class="accItem">
+            <!-- 14 & Up -->
+            <details class="groupCard">
               <summary>
-                <div class="accLeft">
-                  <div class="accTop">
-                    <span class="versePill">Acts 2:4</span>
-                  </div>
+                <div class="groupTitleWrap">
+                  <div class="groupTitle">14 &amp; Up Quotations</div>
+                  <div class="groupSub">Tap to view this age group.</div>
                 </div>
-                <div style="display:flex; align-items:center; gap:10px;">
-                  <a class="openBtn"
-                     href="https://www.bible.com/bible/1/ACT.2.4.KJV"
-                     target="_blank" rel="noopener"
-                     onclick="event.stopPropagation();">
-                    Open
-                  </a>
-                  <span class="chev" aria-hidden="true">
-                    <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
-                  </span>
-                </div>
-              </summary>
-              <div class="accDivider"></div>
-              <div class="accBody">
-                And they were all filled with the Holy Ghost, and began to speak with other tongues, as the Spirit gave them utterance.
-              </div>
-            </details>
 
-            <details class="accItem">
-              <summary>
-                <div class="accLeft">
-                  <div class="accTop">
-                    <span class="versePill">Acts 1:8</span>
-                  </div>
-                </div>
-                <div style="display:flex; align-items:center; gap:10px;">
-                  <a class="openBtn"
-                     href="https://www.bible.com/bible/1/ACT.1.8.KJV"
-                     target="_blank" rel="noopener"
-                     onclick="event.stopPropagation();">
-                    Open
-                  </a>
-                  <span class="chev" aria-hidden="true">
-                    <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
-                  </span>
-                </div>
+                <span class="groupChev" aria-hidden="true">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M6 9l6 6 6-6"></path>
+                  </svg>
+                </span>
               </summary>
-              <div class="accDivider"></div>
-              <div class="accBody">
-                But ye shall receive power, after that the Holy Ghost is come upon you: and ye shall be witnesses unto me both in Jerusalem, and in all Judaea, and in Samaria, and unto the uttermost part of the earth.
-              </div>
-            </details>
 
-            <details class="accItem">
-              <summary>
-                <div class="accLeft">
-                  <div class="accTop">
-                    <span class="versePill">Acts 5:3</span>
-                  </div>
-                </div>
-                <div style="display:flex; align-items:center; gap:10px;">
-                  <a class="openBtn"
-                     href="https://www.bible.com/bible/1/ACT.5.3.KJV"
-                     target="_blank" rel="noopener"
-                     onclick="event.stopPropagation();">
-                    Open
-                  </a>
-                  <span class="chev" aria-hidden="true">
-                    <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
-                  </span>
-                </div>
-              </summary>
-              <div class="accDivider"></div>
-              <div class="accBody">
-                But Peter said, Ananias, why hath Satan filled thine heart to lie to the Holy Ghost, and to keep back part of the price of the land?
-              </div>
-            </details>
+              <div class="groupDivider"></div>
 
-            <details class="accItem">
-              <summary>
-                <div class="accLeft">
-                  <div class="accTop">
-                    <span class="versePill">Hebrews 2:4</span>
-                  </div>
+              <div class="groupBody">
+                <div class="comingSoonText">
+                  Waiting on the official 14 &amp; Up quotation list. This section will be updated as soon as it is received.
                 </div>
-                <div style="display:flex; align-items:center; gap:10px;">
-                  <a class="openBtn"
-                     href="https://www.bible.com/bible/1/HEB.2.4.KJV"
-                     target="_blank" rel="noopener"
-                     onclick="event.stopPropagation();">
-                    Open
-                  </a>
-                  <span class="chev" aria-hidden="true">
-                    <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
-                  </span>
-                </div>
-              </summary>
-              <div class="accDivider"></div>
-              <div class="accBody">
-                God also bearing them witness, both with signs and wonders, and with divers miracles, and gifts of the Holy Ghost, according to his own will?
-              </div>
-            </details>
-
-            <details class="accItem">
-              <summary>
-                <div class="accLeft">
-                  <div class="accTop">
-                    <span class="versePill">Romans 5:5</span>
-                  </div>
-                </div>
-                <div style="display:flex; align-items:center; gap:10px;">
-                  <a class="openBtn"
-                     href="https://www.bible.com/bible/1/ROM.5.5.KJV"
-                     target="_blank" rel="noopener"
-                     onclick="event.stopPropagation();">
-                    Open
-                  </a>
-                  <span class="chev" aria-hidden="true">
-                    <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
-                  </span>
-                </div>
-              </summary>
-              <div class="accDivider"></div>
-              <div class="accBody">
-                And hope maketh not ashamed; because the love of God is shed abroad in our hearts by the Holy Ghost which is given unto us.
-              </div>
-            </details>
-
-            <details class="accItem">
-              <summary>
-                <div class="accLeft">
-                  <div class="accTop">
-                    <span class="versePill">Romans 15:13</span>
-                  </div>
-                </div>
-                <div style="display:flex; align-items:center; gap:10px;">
-                  <a class="openBtn"
-                     href="https://www.bible.com/bible/1/ROM.15.13.KJV"
-                     target="_blank" rel="noopener"
-                     onclick="event.stopPropagation();">
-                    Open
-                  </a>
-                  <span class="chev" aria-hidden="true">
-                    <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
-                  </span>
-                </div>
-              </summary>
-              <div class="accDivider"></div>
-              <div class="accBody">
-                Now the God of hope fill you with all joy and peace in believing, that ye may abound in hope, through the power of the Holy Ghost.
-              </div>
-            </details>
-
-            <details class="accItem">
-              <summary>
-                <div class="accLeft">
-                  <div class="accTop">
-                    <span class="versePill">Ephesians 4:30</span>
-                  </div>
-                </div>
-                <div style="display:flex; align-items:center; gap:10px;">
-                  <a class="openBtn"
-                     href="https://www.bible.com/bible/1/EPH.4.30.KJV"
-                     target="_blank" rel="noopener"
-                     onclick="event.stopPropagation();">
-                    Open
-                  </a>
-                  <span class="chev" aria-hidden="true">
-                    <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
-                  </span>
-                </div>
-              </summary>
-              <div class="accDivider"></div>
-              <div class="accBody">
-                And grieve not the holy Spirit of God, whereby ye are sealed unto the day of redemption.
-              </div>
-            </details>
-
-            <details class="accItem">
-              <summary>
-                <div class="accLeft">
-                  <div class="accTop">
-                    <span class="versePill">2 Corinthians 6:6</span>
-                  </div>
-                </div>
-                <div style="display:flex; align-items:center; gap:10px;">
-                  <a class="openBtn"
-                     href="https://www.bible.com/bible/1/2CO.6.6.KJV"
-                     target="_blank" rel="noopener"
-                     onclick="event.stopPropagation();">
-                    Open
-                  </a>
-                  <span class="chev" aria-hidden="true">
-                    <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
-                  </span>
-                </div>
-              </summary>
-              <div class="accDivider"></div>
-              <div class="accBody">
-                By pureness, by knowledge, by longsuffering, by kindness, by the Holy Ghost, by love unfeigned,
-              </div>
-            </details>
-
-            <details class="accItem">
-              <summary>
-                <div class="accLeft">
-                  <div class="accTop">
-                    <span class="versePill">1 Corinthians 16:8</span>
-                  </div>
-                </div>
-                <div style="display:flex; align-items:center; gap:10px;">
-                  <a class="openBtn"
-                     href="https://www.bible.com/bible/1/1CO.16.8.KJV"
-                     target="_blank" rel="noopener"
-                     onclick="event.stopPropagation();">
-                    Open
-                  </a>
-                  <span class="chev" aria-hidden="true">
-                    <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
-                  </span>
-                </div>
-              </summary>
-              <div class="accDivider"></div>
-              <div class="accBody">
-                But I will tarry at Ephesus until Pentecost.
               </div>
             </details>
 
           </div>
-
-          <div class="dividerSpace"></div>
-
-          <h3 class="sectionHeading">14 &amp; Up Quotations</h3>
-          <div class="comingSoon">
-            Waiting on the official 14 and up quotation list. This section will be updated as soon as it is received.
-          </div>
-
         </div>
       </article>
 
@@ -540,11 +379,5 @@
 
     </div>
   </nav>
-
-  <script>
-    document.querySelectorAll('.openBtn').forEach(btn => {
-      btn.addEventListener('click', (e) => e.stopPropagation());
-    });
-  </script>
 </body>
 </html>
