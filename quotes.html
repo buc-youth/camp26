@@ -4,19 +4,16 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>BUC Camp 26 • Quotation Station</title>
-<link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-
+  <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <link rel="manifest" href="manifest.webmanifest" />
   <meta name="theme-color" content="#2b0a3d" />
   <link rel="stylesheet" href="styles.css" />
 
-  <!-- Small page-specific styles (keeps your main styles.css clean) -->
   <style>
     .accordion { display: grid; gap: 12px; margin-top: 10px; }
 
-    /* Make details look like your glass cards */
     details.accItem{
       border-radius: 18px;
       overflow: hidden;
@@ -26,7 +23,6 @@
       box-shadow: 0 10px 25px rgba(0,0,0,.35);
     }
 
-    /* remove default marker */
     details.accItem summary{
       list-style: none;
       cursor: pointer;
@@ -37,6 +33,7 @@
       gap: 10px;
       user-select: none;
     }
+
     details.accItem summary::-webkit-details-marker{ display:none; }
 
     .accLeft{
@@ -66,13 +63,6 @@
       white-space: nowrap;
     }
 
-    .accHint{
-      opacity: .88;
-      font-size: .95rem;
-      line-height: 1.25;
-      color: rgba(255,255,255,0.92);
-    }
-
     .openBtn{
       display: inline-flex;
       align-items: center;
@@ -87,21 +77,28 @@
       box-shadow: 0 8px 18px rgba(0,0,0,.18);
       white-space: nowrap;
     }
+
     .openBtn:active{ transform: scale(.98); }
 
     .chev{
-      width: 22px; height: 22px;
+      width: 22px;
+      height: 22px;
       border-radius: 999px;
-      display: grid; place-items:center;
+      display: grid;
+      place-items:center;
       background: rgba(0,0,0,0.25);
       border: 1px solid rgba(255,255,255,0.15);
     }
+
     .chev svg{
-      width: 16px; height: 16px;
-      stroke: #fff; fill: none;
+      width: 16px;
+      height: 16px;
+      stroke: #fff;
+      fill: none;
       stroke-width: 2.2;
       transition: transform .18s ease;
     }
+
     details[open] .chev svg{ transform: rotate(180deg); }
 
     .accBody{
@@ -117,13 +114,42 @@
       margin: 0 14px 12px;
     }
 
+    .sectionHeading{
+      margin: 0 0 8px;
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: #fff;
+    }
+
+    .sectionNote{
+      margin: 0 0 12px;
+      color: rgba(255,255,255,0.92);
+      line-height: 1.45;
+    }
+
+    .comingSoon{
+      margin-top: 18px;
+      padding: 14px;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.10);
+      border: 1px solid rgba(255,255,255,0.14);
+      color: rgba(255,255,255,0.94);
+      line-height: 1.45;
+    }
+
+    .dividerSpace{
+      height: 10px;
+    }
+
     .tipRow{
       display:flex;
       gap:12px;
       align-items:flex-start;
     }
+
     .tipIcon{
-      width: 28px; height: 28px;
+      width: 28px;
+      height: 28px;
       stroke: rgba(255,255,255,0.92);
       fill: none;
       stroke-width: 2.2;
@@ -131,6 +157,7 @@
       margin-top: 2px;
       opacity: .95;
     }
+
     .tipLink{
       display:inline-block;
       margin-top: 8px;
@@ -142,204 +169,297 @@
       color: #1b0a14;
       border: 1px solid rgba(255,255,255,0.25);
     }
+
     .tipLink:active{ transform: scale(.98); }
   </style>
 </head>
 
 <body>
-  <main class="screen" role="main" aria-label="BUC Camp 26 Quiz Station">
+  <main class="screen" role="main" aria-label="BUC Camp 26 Quotation Station">
     <div class="bg" aria-hidden="true"></div>
 
     <section class="stack">
 
-      <!-- Banner (tap to home) -->
       <a class="tap" href="index.html" aria-label="Back to home">
         <img class="panel" src="assets/header.jpg" alt="BUC Camp 26 - Pentecost" />
       </a>
 
-   <!-- Optional header image inside the card -->
-          <img src="assets/quote.png" alt="Quotation Station" class="pageBanner" />
+      <img src="assets/quote.png" alt="Quotation Station" class="pageBanner" />
 
-      <!-- =========================
-           QUOTATION STATION CARD
-           ========================= -->
       <article class="cardGlass" aria-label="Quotation Station">
-        
-        
-
-         
-
         <div class="cardBody">
+
+          <h2 class="cardTitle">Quotation Station</h2>
+
+          <h3 class="sectionHeading">13 &amp; Under Quotations</h3>
+          <p class="sectionNote">
+            These are the official quotation references currently received for the 13 and under age group.
+          </p>
 
           <div class="accordion">
 
-            <!-- Acts 2:1–4 -->
             <details class="accItem">
               <summary>
                 <div class="accLeft">
                   <div class="accTop">
-                    <span class="versePill">Acts 2:1–4</span>
-                    <span class="accHint">The Spirit is poured out — wind + fire.</span>
+                    <span class="versePill">Acts 2:1</span>
                   </div>
                 </div>
-
                 <div style="display:flex; align-items:center; gap:10px;">
                   <a class="openBtn"
-                     href="https://www.bible.com/bible/1/ACT.2.1-4.KJV"
+                     href="https://www.bible.com/bible/1/ACT.2.1.KJV"
                      target="_blank" rel="noopener"
                      onclick="event.stopPropagation();">
                     Open
                   </a>
-
                   <span class="chev" aria-hidden="true">
                     <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
                   </span>
                 </div>
               </summary>
-
               <div class="accDivider"></div>
               <div class="accBody">
-                <b>1</b> And when the day of Pentecost was fully come, they were all with one accord in one place.<br>
-                <b>2</b> And suddenly there came a sound from heaven as of a rushing mighty wind, and it filled all the house where they were sitting.<br>
-                <b>3</b> And there appeared unto them cloven tongues like as of fire, and it sat upon each of them.<br>
-                <b>4</b> And they were all filled with the Holy Ghost, and began to speak with other tongues, as the Spirit gave them utterance.
+                And when the day of Pentecost was fully come, they were all with one accord in one place.
               </div>
             </details>
 
-            <!-- Acts 2:17–21 -->
             <details class="accItem">
               <summary>
                 <div class="accLeft">
                   <div class="accTop">
-                    <span class="versePill">Acts 2:17–21</span>
-                    <span class="accHint">Prophecy fulfilled — “I will pour out my Spirit…”</span>
+                    <span class="versePill">Acts 2:4</span>
                   </div>
                 </div>
-
                 <div style="display:flex; align-items:center; gap:10px;">
                   <a class="openBtn"
-                     href="https://www.bible.com/bible/1/ACT.2.17-21.KJV"
+                     href="https://www.bible.com/bible/1/ACT.2.4.KJV"
                      target="_blank" rel="noopener"
                      onclick="event.stopPropagation();">
                     Open
                   </a>
-
                   <span class="chev" aria-hidden="true">
                     <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
                   </span>
                 </div>
               </summary>
-
               <div class="accDivider"></div>
               <div class="accBody">
-                <b>17</b> And it shall come to pass in the last days, saith God, I will pour out of my Spirit upon all flesh: and your sons and your daughters shall prophesy, and your young men shall see visions, and your old men shall dream dreams:<br>
-                <b>18</b> And on my servants and on my handmaidens I will pour out in those days of my Spirit; and they shall prophesy:<br>
-                <b>19</b> And I will shew wonders in heaven above, and signs in the earth beneath; blood, and fire, and vapour of smoke:<br>
-                <b>20</b> The sun shall be turned into darkness, and the moon into blood, before that great and notable day of the Lord come:<br>
-                <b>21</b> And it shall come to pass, that whosoever shall call on the name of the Lord shall be saved.
+                And they were all filled with the Holy Ghost, and began to speak with other tongues, as the Spirit gave them utterance.
               </div>
             </details>
 
-            <!-- Acts 2:37–39 -->
             <details class="accItem">
               <summary>
                 <div class="accLeft">
                   <div class="accTop">
-                    <span class="versePill">Acts 2:37–39</span>
-                    <span class="accHint">Response: repent, be baptized, receive the gift.</span>
+                    <span class="versePill">Acts 1:8</span>
                   </div>
                 </div>
-
                 <div style="display:flex; align-items:center; gap:10px;">
                   <a class="openBtn"
-                     href="https://www.bible.com/bible/1/ACT.2.37-39.KJV"
+                     href="https://www.bible.com/bible/1/ACT.1.8.KJV"
                      target="_blank" rel="noopener"
                      onclick="event.stopPropagation();">
                     Open
                   </a>
-
                   <span class="chev" aria-hidden="true">
                     <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
                   </span>
                 </div>
               </summary>
-
               <div class="accDivider"></div>
               <div class="accBody">
-                <b>37</b> Now when they heard this, they were pricked in their heart, and said unto Peter and to the rest of the apostles, Men and brethren, what shall we do?<br>
-                <b>38</b> Then Peter said unto them, Repent, and be baptized every one of you in the name of Jesus Christ for the remission of sins, and ye shall receive the gift of the Holy Ghost.<br>
-                <b>39</b> For the promise is unto you, and to your children, and to all that are afar off, even as many as the Lord our God shall call.
+                But ye shall receive power, after that the Holy Ghost is come upon you: and ye shall be witnesses unto me both in Jerusalem, and in all Judaea, and in Samaria, and unto the uttermost part of the earth.
               </div>
             </details>
 
-            <!-- Joel 2:28–29 -->
             <details class="accItem">
               <summary>
                 <div class="accLeft">
                   <div class="accTop">
-                    <span class="versePill">Joel 2:28–29</span>
-                    <span class="accHint">Promise: Spirit poured out on all flesh.</span>
+                    <span class="versePill">Acts 5:3</span>
                   </div>
                 </div>
-
                 <div style="display:flex; align-items:center; gap:10px;">
                   <a class="openBtn"
-                     href="https://www.bible.com/bible/1/JOL.2.28-29.KJV"
+                     href="https://www.bible.com/bible/1/ACT.5.3.KJV"
                      target="_blank" rel="noopener"
                      onclick="event.stopPropagation();">
                     Open
                   </a>
-
                   <span class="chev" aria-hidden="true">
                     <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
                   </span>
                 </div>
               </summary>
-
               <div class="accDivider"></div>
               <div class="accBody">
-                <b>28</b> And it shall come to pass afterward, that I will pour out my spirit upon all flesh; and your sons and your daughters shall prophesy, your old men shall dream dreams, your young men shall see visions:<br>
-                <b>29</b> And also upon the servants and upon the handmaids in those days will I pour out my spirit.
+                But Peter said, Ananias, why hath Satan filled thine heart to lie to the Holy Ghost, and to keep back part of the price of the land?
               </div>
             </details>
 
-            <!-- Joel 2:32 -->
             <details class="accItem">
               <summary>
                 <div class="accLeft">
                   <div class="accTop">
-                    <span class="versePill">Joel 2:32</span>
-                    <span class="accHint">“Whosoever shall call…” deliverance.</span>
+                    <span class="versePill">Hebrews 2:4</span>
                   </div>
                 </div>
-
                 <div style="display:flex; align-items:center; gap:10px;">
                   <a class="openBtn"
-                     href="https://www.bible.com/bible/1/JOL.2.32.KJV"
+                     href="https://www.bible.com/bible/1/HEB.2.4.KJV"
                      target="_blank" rel="noopener"
                      onclick="event.stopPropagation();">
                     Open
                   </a>
-
                   <span class="chev" aria-hidden="true">
                     <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
                   </span>
                 </div>
               </summary>
-
               <div class="accDivider"></div>
               <div class="accBody">
-                And it shall come to pass, that whosoever shall call on the name of the Lord shall be delivered: for in mount Zion and in Jerusalem shall be deliverance, as the Lord hath said, and in the remnant whom the Lord shall call.
+                God also bearing them witness, both with signs and wonders, and with divers miracles, and gifts of the Holy Ghost, according to his own will?
+              </div>
+            </details>
+
+            <details class="accItem">
+              <summary>
+                <div class="accLeft">
+                  <div class="accTop">
+                    <span class="versePill">Romans 5:5</span>
+                  </div>
+                </div>
+                <div style="display:flex; align-items:center; gap:10px;">
+                  <a class="openBtn"
+                     href="https://www.bible.com/bible/1/ROM.5.5.KJV"
+                     target="_blank" rel="noopener"
+                     onclick="event.stopPropagation();">
+                    Open
+                  </a>
+                  <span class="chev" aria-hidden="true">
+                    <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+                  </span>
+                </div>
+              </summary>
+              <div class="accDivider"></div>
+              <div class="accBody">
+                And hope maketh not ashamed; because the love of God is shed abroad in our hearts by the Holy Ghost which is given unto us.
+              </div>
+            </details>
+
+            <details class="accItem">
+              <summary>
+                <div class="accLeft">
+                  <div class="accTop">
+                    <span class="versePill">Romans 15:13</span>
+                  </div>
+                </div>
+                <div style="display:flex; align-items:center; gap:10px;">
+                  <a class="openBtn"
+                     href="https://www.bible.com/bible/1/ROM.15.13.KJV"
+                     target="_blank" rel="noopener"
+                     onclick="event.stopPropagation();">
+                    Open
+                  </a>
+                  <span class="chev" aria-hidden="true">
+                    <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+                  </span>
+                </div>
+              </summary>
+              <div class="accDivider"></div>
+              <div class="accBody">
+                Now the God of hope fill you with all joy and peace in believing, that ye may abound in hope, through the power of the Holy Ghost.
+              </div>
+            </details>
+
+            <details class="accItem">
+              <summary>
+                <div class="accLeft">
+                  <div class="accTop">
+                    <span class="versePill">Ephesians 4:30</span>
+                  </div>
+                </div>
+                <div style="display:flex; align-items:center; gap:10px;">
+                  <a class="openBtn"
+                     href="https://www.bible.com/bible/1/EPH.4.30.KJV"
+                     target="_blank" rel="noopener"
+                     onclick="event.stopPropagation();">
+                    Open
+                  </a>
+                  <span class="chev" aria-hidden="true">
+                    <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+                  </span>
+                </div>
+              </summary>
+              <div class="accDivider"></div>
+              <div class="accBody">
+                And grieve not the holy Spirit of God, whereby ye are sealed unto the day of redemption.
+              </div>
+            </details>
+
+            <details class="accItem">
+              <summary>
+                <div class="accLeft">
+                  <div class="accTop">
+                    <span class="versePill">2 Corinthians 6:6</span>
+                  </div>
+                </div>
+                <div style="display:flex; align-items:center; gap:10px;">
+                  <a class="openBtn"
+                     href="https://www.bible.com/bible/1/2CO.6.6.KJV"
+                     target="_blank" rel="noopener"
+                     onclick="event.stopPropagation();">
+                    Open
+                  </a>
+                  <span class="chev" aria-hidden="true">
+                    <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+                  </span>
+                </div>
+              </summary>
+              <div class="accDivider"></div>
+              <div class="accBody">
+                By pureness, by knowledge, by longsuffering, by kindness, by the Holy Ghost, by love unfeigned,
+              </div>
+            </details>
+
+            <details class="accItem">
+              <summary>
+                <div class="accLeft">
+                  <div class="accTop">
+                    <span class="versePill">1 Corinthians 16:8</span>
+                  </div>
+                </div>
+                <div style="display:flex; align-items:center; gap:10px;">
+                  <a class="openBtn"
+                     href="https://www.bible.com/bible/1/1CO.16.8.KJV"
+                     target="_blank" rel="noopener"
+                     onclick="event.stopPropagation();">
+                    Open
+                  </a>
+                  <span class="chev" aria-hidden="true">
+                    <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+                  </span>
+                </div>
+              </summary>
+              <div class="accDivider"></div>
+              <div class="accBody">
+                But I will tarry at Ephesus until Pentecost.
               </div>
             </details>
 
           </div>
+
+          <div class="dividerSpace"></div>
+
+          <h3 class="sectionHeading">14 &amp; Up Quotations</h3>
+          <div class="comingSoon">
+            Waiting on the official 14 and up quotation list. This section will be updated as soon as it is received.
+          </div>
+
         </div>
       </article>
 
-      <!-- =========================
-           3) PRO TIP CARD
-           ========================= -->
       <article class="cardGlass" aria-label="Pro tip">
         <h2 class="cardTitle">Pro Tip</h2>
 
@@ -352,27 +472,25 @@
             </svg>
 
             <div class="vvWrap">
-               <a class="tap"
-      href="https://play.google.com/store/apps/details?id=com.njambi.versevault"
-     target="_blank" 
-       rel="noopener">
-      <img class="vvIcon"
-           src="assets/vv.png"
-           alt="Verse Vault app" />
-    </a>
-  
+              <a class="tap"
+                 href="https://play.google.com/store/apps/details?id=com.njambi.versevault"
+                 target="_blank"
+                 rel="noopener">
+                <img class="vvIcon"
+                     src="assets/vv.png"
+                     alt="Verse Vault app" />
+              </a>
 
-  <p class="vvText">
-    <b>Android users:</b> Use <b>Bible Verse Vault</b> to help study quotations and key scriptures.
-  </p>
+              <p class="vvText">
+                <b>Android users:</b> Use <b>Bible Verse Vault</b> to help study quotations and key scriptures.
+              </p>
 
-  <a class="tipLink"
-     href="https://play.google.com/store/apps/details?id=com.njambi.versevault"
-     target="_blank" rel="noopener">
-     Get Bible Verse Vault <br>on Google Play
-  </a>
-
-</div>
+              <a class="tipLink"
+                 href="https://play.google.com/store/apps/details?id=com.njambi.versevault"
+                 target="_blank" rel="noopener">
+                 Get Bible Verse Vault <br>on Google Play
+              </a>
+            </div>
           </div>
         </div>
       </article>
@@ -381,51 +499,49 @@
     </section>
   </main>
 
-  <!-- ================= Bottom Navigation ================= -->
-<nav class="bottomNav" aria-label="Bottom navigation">
-  <div class="bottomNavInner">
+  <nav class="bottomNav" aria-label="Bottom navigation">
+    <div class="bottomNavInner">
 
-    <a href="info.html" class="navItem">
-      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <circle cx="12" cy="12" r="10"></circle>
-        <line x1="12" y1="16" x2="12" y2="12"></line>
-        <line x1="12" y1="8" x2="12.01" y2="8"></line>
-      </svg>
-      <span>Camp <br>Info</span>
-    </a>
+      <a href="info.html" class="navItem">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"></circle>
+          <line x1="12" y1="16" x2="12" y2="12"></line>
+          <line x1="12" y1="8" x2="12.01" y2="8"></line>
+        </svg>
+        <span>Camp <br>Info</span>
+      </a>
 
-    <a href="bring.html" class="navItem">
-      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <rect x="3" y="8" width="18" height="12" rx="2"></rect>
-        <path d="M7 8V5a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v3"></path>
-      </svg>
-      <span>What to <br>Bring</span>
-    </a>
+      <a href="bring.html" class="navItem">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="8" width="18" height="12" rx="2"></rect>
+          <path d="M7 8V5a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v3"></path>
+        </svg>
+        <span>What to <br>Bring</span>
+      </a>
 
-    <a href="quotes.html" class="navItem active">
-      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-        <path d="M8 9h.01"></path>
-        <path d="M12 9h.01"></path>
-        <path d="M16 9h.01"></path>
-      </svg>
-      <span>Quotation <br>Station</span>
-    </a>
+      <a href="quotes.html" class="navItem active">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+          <path d="M8 9h.01"></path>
+          <path d="M12 9h.01"></path>
+          <path d="M16 9h.01"></path>
+        </svg>
+        <span>Quotation <br>Station</span>
+      </a>
 
-    <a href="quiz.html" class="navItem">
-      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
-        <line x1="12" y1="17" x2="12.01" y2="17"></line>
-        <circle cx="12" cy="12" r="10"></circle>
-      </svg>
-      <span>Quiz <br>Corner</span>
-    </a>
+      <a href="quiz.html" class="navItem">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+          <line x1="12" y1="17" x2="12.01" y2="17"></line>
+          <circle cx="12" cy="12" r="10"></circle>
+        </svg>
+        <span>Quiz <br>Corner</span>
+      </a>
 
-  </div>
-</nav>
+    </div>
+  </nav>
 
   <script>
-    // Make sure tapping the "Open" button never toggles the accordion.
     document.querySelectorAll('.openBtn').forEach(btn => {
       btn.addEventListener('click', (e) => e.stopPropagation());
     });
