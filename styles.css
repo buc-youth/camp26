@@ -606,3 +606,51 @@ input, select, textarea{
 .actionBtn:active{
   transform: scale(.98);
 }
+
+.quoteActions{
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin: 0 0 14px 0;
+}
+
+.iconActionBtn{
+  width: 44px;
+  height: 44px;
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 999px;
+  background: rgba(255,255,255,0.82);
+  color: #1b0a14;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 18px rgba(0,0,0,.18);
+  cursor: pointer;
+}
+
+.iconActionBtn:active{
+  transform: scale(.97);
+}
+
+.iconActionBtn svg{
+  width: 20px;
+  height: 20px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.actionLabel{
+  text-align: center;
+  font-size: .82rem;
+  color: rgba(255,255,255,.92);
+  margin-top: 4px;
+}
+
+.actionWrap{
+  display: grid;
+  justify-items: center;
+  gap: 4px;
+}
