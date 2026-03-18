@@ -1,4 +1,4 @@
-const CACHE_NAME = "buc-camp-26-v4";
+const CACHE_NAME = "buc-camp-26-v5";
 
 const ASSETS = [
   "./",
